@@ -12,7 +12,7 @@ def main():
     screen = pygame.display.set_mode((800, 600))
 
     # Titel des Fensters setzen, Mauszeiger nicht verstecken und Tastendrücke wiederholt senden.
-    pygame.display.set_caption("Pygame-Tutorial: Grundlagen")
+    pygame.display.set_caption("Mühle Spiel - FHNW")
     pygame.mouse.set_visible(1)
     pygame.key.set_repeat(1, 30)
 
