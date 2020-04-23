@@ -9,7 +9,7 @@ def main():
     # Initialisieren aller Pygame-Module und
     # Fenster erstellen (wir bekommen eine Surface, die den Bildschirm repräsentiert).
     pygame.init()
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((1000, 800))
 
     # Titel des Fensters setzen, Mauszeiger nicht verstecken und Tastendrücke wiederholt senden.
     pygame.display.set_caption("Mühle Spiel - FHNW Programmieren")
@@ -26,8 +26,8 @@ def main():
         # Pygame wartet, falls das Programm schneller läuft.
         clock.tick(30)
 
-        # screen-Surface mit Schwarz (RGB = 0, 0, 0) füllen.
-        screen.fill((0, 0, 0))
+        # screen-Surface Baige
+        screen.fill((207, 185, 151))
 
         # Alle aufgelaufenen Events holen und abarbeiten.
         for event in pygame.event.get():
@@ -40,9 +40,30 @@ def main():
                 # Wenn Escape gedrückt wird, posten wir ein QUIT-Event in Pygames Event-Warteschlange.
                 if event.key == pygame.K_ESCAPE:
                     pygame.event.post(pygame.event.Event(pygame.QUIT))
+        #ausserste linie
+        pygame.draw.rect(screen, (0, 0, 0), (200, 30, 600, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (800, 30, 1, 600))
+        pygame.draw.rect(screen, (0, 0, 0), (200, 30, 1, 600))
+        pygame.draw.rect(screen, (0, 0, 0), (200, 630, 600, 1))
+        #mittlere Linie
+        pygame.draw.rect(screen, (0, 0, 0), (300, 130, 400, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (700, 130, 1, 400))
+        pygame.draw.rect(screen, (0, 0, 0), (300, 130, 1, 400))
+        pygame.draw.rect(screen, (0, 0, 0), (300, 530, 400, 1))
+        # innere Linie
+        pygame.draw.rect(screen, (0, 0, 0), (400, 230, 200, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (600, 230, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (400, 230, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (400, 430, 200, 1))
+        # innere Linie
+        pygame.draw.rect(screen, (0, 0, 0), (500, 430, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (500, 30, 1, 200))
+        pygame.draw.rect(screen, (250, 0, 0), (200, 330, 200, 1))
+        pygame.draw.rect(screen, (250, 0, 0), (600, 330, 200, 1))
 
         # Inhalt von screen anzeigen.
         pygame.display.flip()
+
 
 
 # Überprüfen, ob dieses Modul als Programm läuft und nicht in einem anderen Modul importiert wird.
