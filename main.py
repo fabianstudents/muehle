@@ -5,54 +5,62 @@ if not pygame.font: print('Fehler pygame.font Modul konnte nicht geladen werden!
 if not pygame.mixer: print('Fehler pygame.mixer Modul konnte nicht geladen werden!')
 
 #Spielfeld
-a1 = ['x']
-a2 = ['x']
-a3 = ["x"]
-a4 = ["x"]
-a5 = ["x"]
-a6 = ["x"]
-a7 = ["x"]
-a8 = ["x"]
-a9 = ["x"]
-a10 = ["x"]
-a11 = ["x"]
-a12 = ["x"]
-a13 = ["x"]
-a14 = ["x"]
-a15 = ["x"]
-a16 = ["x"]
-a17 = ["x"]
-a18 = ["x"]
-a19 = ["x"]
-a20 = ["x"]
-a21 = ["x"]
-a22 = ["x"]
-a23 = ["x"]
-a24 = ["x"]
+a1 = 'x'
+a2 = 'x'
+a3 = "x"
+a4 = "x"
+a5 = "x"
+a6 = "x"
+a7 = "x"
+a8 = "x"
+a9 = "x"
+a10 = "x"
+a11 = "x"
+a12 = "x"
+a13 = "x"
+a14 = "x"
+a15 = "x"
+a16 = "x"
+a17 = "x"
+a18 = "x"
+a19 = "x"
+a20 = "x"
+a21 = "x"
+a22 = "x"
+a23 = "x"
+a24 = "x"
 
-spielfeld = ['a1', 'a2', a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24]
+spielfeld = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24]
 
 "print (spielfeld)"
 
 def place_and_remove():
-    aktueller_spieler = 1
-    test = False
+    steinberg = 18
+    aktueller_spieler = "w"
 
-
-    while test == False:
-        spieleingabe = input("Geben Sie ein Feld zwischen a1 und a24 an.")
-        if spieleingabe in spielfeld:
-            if spieleingabe == "x":
-                print(spieleingabe)
-                spieleingabe = aktueller_spieler
-                break
+    while steinberg > 0:
+        spieleingabe = int(input("Geben Sie ein Feld zwischen 1 und 24 an."))
+        if spieleingabe <= 24:
+            "spieleingabe == a1 or a2 or a3 or a4 or a5 or a6 or a7 or a8 or a9 or a10 or a11 or a12 or a13 or a14 or a15 or a16 or a17 or a18 or a19 or a20 or a21 or a22 or a23 or a24:"
+            if spielfeld[spieleingabe-1] == "x":
+                spielfeld[spieleingabe - 1] = aktueller_spieler
+                steinberg = steinberg -1
+                if aktueller_spieler == "w":
+                    aktueller_spieler = "b"
+                    print(spielfeld)
+                    print(spieleingabe)
+                else:
+                    aktueller_spieler = "w"
+                    print(spielfeld)
+                    print(spieleingabe)
             else:
-                print(spieleingabe)
                 print("Platz bereits belegt, bitte einen anderes Feld auswählen.")
         else:
-            print("Bitte wähle einen Platz auf dem Spielfeld aus (a1 bis a24), achte auf die Schreibweise!")
-            break
-    print(spielfeld)
+            print(spielfeld)
+            print(spieleingabe)
+            print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24), achte auf die Schreibweise!")
+
+
 
 
 
