@@ -31,8 +31,68 @@ a23 = "x"
 a24 = "x"
 
 spielfeld = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24]
+muehle1 = 0
+muehle2 = 0
+muehle3 = 0
+muehle4 = 0
+muehle5 = 0
+muehle6 = 0
+muehle7 = 0
+muehle8 = 0
+muehle9 = 0
+muehle10 = 0
+muehle11 = 0
+muehle12 = 0
+muehle13 = 0
+muehle14 = 0
+muehle15 = 0
+muehle16 = 0
 
-"print (spielfeld)"
+alle_muehlen = [muehle1, muehle2, muehle3, muehle4, muehle5, muehle6, muehle7, muehle8, muehle9, muehle10, muehle11, muehle12, muehle13, muehle14, muehle15, muehle16]
+
+def muehle_erkennen():
+    neue_muehle = 0
+    if spielfeld[0] == spielfeld[1] == spielfeld[2] != "x" and alle_muehlen[0] == 0:
+        alle_muehlen[0] = 1
+        neue_muehle = 1
+        print("Neue Mühle 1")
+    elif spielfeld[3] == spielfeld[4] == spielfeld[5] != "x" and alle_muehlen[1] == 0:
+        alle_muehlen[1] = 1
+        neue_muehle = 1
+        print("Neue Mühla1e 2")
+    elif spielfeld[3] == spielfeld[4] == spielfeld[5] != "x" and alle_muehlen[1] == 0:
+        alle_muehlen[1] = 1
+        neue_muehle = 1
+        print("Neue Mühla1e 2")
+    else:
+        print("keine neue Mühle")
+
+    while neue_muehle == 1:
+        print(spielfeld)
+        stein_entfernen = int(input("Sie dürfen einen Stein Enfernen, aktueller Spielstand siehe oben:\n"))
+        if stein_entfernen <= 24:
+            if stein_entfernen == 1:
+                if alle_muehlen[0] == 0:
+                    spielfeld[stein_entfernen-1] = "x"
+                    neue_muehle = 0
+                else:
+                    print("Stein befindet sich in einer Mühle")
+            elif stein_entfernen == 4:
+                if alle_muehlen[1] == 0:
+                    spielfeld[stein_entfernen - 1] = "x"
+                    neue_muehle = 0
+                else:
+                    print("Stein befindet sich in einer Mühle")
+            else:
+                if muehle4 == 0:
+                    spielfeld[stein_entfernen - 1] = "x"
+                    neue_muehle = 0
+                else:
+                    print("Stein befindet sich in einer Mühele")
+        else:
+            print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
+
+
 
 def place_and_remove():
     steinberg = 18
@@ -40,11 +100,12 @@ def place_and_remove():
 
     while steinberg > 0:
         spieleingabe = int(input("Geben Sie ein Feld zwischen 1 und 24 an."))
+        print(alle_muehlen)
         if spieleingabe <= 24:
-            "spieleingabe == a1 or a2 or a3 or a4 or a5 or a6 or a7 or a8 or a9 or a10 or a11 or a12 or a13 or a14 or a15 or a16 or a17 or a18 or a19 or a20 or a21 or a22 or a23 or a24:"
             if spielfeld[spieleingabe-1] == "x":
                 spielfeld[spieleingabe - 1] = aktueller_spieler
                 steinberg = steinberg -1
+                muehle_erkennen()
                 if aktueller_spieler == "w":
                     aktueller_spieler = "b"
                     print(spielfeld)
@@ -58,7 +119,7 @@ def place_and_remove():
         else:
             print(spielfeld)
             print(spieleingabe)
-            print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24), achte auf die Schreibweise!")
+            print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
 
 
 
