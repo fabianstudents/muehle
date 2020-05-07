@@ -24,7 +24,6 @@ green = (34, 177, 76)
 light_green = (0, 255, 0)
 beige = (207, 185, 151)
 
-
 smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
 largefont = pygame.font.SysFont("comicsansms", 85)
@@ -63,12 +62,12 @@ def game_controls():
 
         gameDisplay.fill(white)
         message_to_screen("Link zu Regeln", green, -200, size="large")
-        message_to_screen("www.irgendetwas.ch", black, -30)
+        message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", black, -30)
 
 
-        button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
-        button("Hauptmenü", 350, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
-        button("verlassen", 550, 500, 150, 50, red, light_red, action="verlassen")
+        button("spielen", 225, 500, 150, 50, green, light_green, action="spielen")
+        button("Hauptmenü", 425, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
+        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
@@ -151,9 +150,9 @@ def game_intro():
         message_to_screen("programmiert von Studenten der FHNW.", black, 10)
 
 
-        button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
-        button("Regeln", 350, 500, 150, 50, yellow, light_yellow, action="Regeln")
-        button("verlassen", 550, 500, 150, 50, red, light_red, action="verlassen")
+        button("spielen", 225, 500, 150, 50, green, light_green, action="spielen")
+        button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
+        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
@@ -174,9 +173,9 @@ def game_over(): #Muss noch angepasst werden!!
         message_to_screen("Game Over", green, -100, size="large")
         message_to_screen("You died.", black, -30)
 
-        button("nochmals spielen", 150, 500, 150, 50, green, light_green, action="spielen")
-        button("Regeln", 350, 500, 100, 50, yellow, light_yellow, action="Regeln")
-        button("verlassen", 550, 500, 150, 50, red, light_red, action="verlassen")
+        button("nochmals spielen", 225, 500, 150, 50, green, light_green, action="spielen")
+        button("Regeln", 425, 500, 100, 50, yellow, light_yellow, action="Regeln")
+        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
@@ -197,9 +196,9 @@ def you_win(): #Muss noch angepasst werden!!
         message_to_screen("You won!", green, -100, size="large")
         message_to_screen("Congratulations!", black, -30)
 
-        button("nochmals spielen", 150, 500, 150, 50, green, light_green, action="spielen")
-        button("Regeln", 350, 500, 150, 50, yellow, light_yellow, action="Regeln")
-        button("verlassen", 550, 500, 150, 50, red, light_red, action="verlassen")
+        button("nochmals spielen", 225, 500, 150, 50, green, light_green, action="spielen")
+        button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
+        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
@@ -800,25 +799,25 @@ def playboard():
                 if event.key == pygame.K_ESCAPE:
                     pygame.event.post(pygame.event.Event(pygame.QUIT))
         #ausserste linie
-        pygame.draw.rect(screen, (0, 0, 0), (200, 30, 600, 1))
-        pygame.draw.rect(screen, (0, 0, 0), (800, 30, 1, 600))
-        pygame.draw.rect(screen, (0, 0, 0), (200, 30, 1, 600))
-        pygame.draw.rect(screen, (0, 0, 0), (200, 630, 600, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (200, 90, 600, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (800, 90, 1, 600))
+        pygame.draw.rect(screen, (0, 0, 0), (200, 90, 1, 600))
+        pygame.draw.rect(screen, (0, 0, 0), (200, 690, 600, 1))
         #mittlere Linie
-        pygame.draw.rect(screen, (0, 0, 0), (300, 130, 400, 1))
-        pygame.draw.rect(screen, (0, 0, 0), (700, 130, 1, 400))
-        pygame.draw.rect(screen, (0, 0, 0), (300, 130, 1, 400))
-        pygame.draw.rect(screen, (0, 0, 0), (300, 530, 400, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (300, 190, 400, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (700, 190, 1, 400))
+        pygame.draw.rect(screen, (0, 0, 0), (300, 190, 1, 400))
+        pygame.draw.rect(screen, (0, 0, 0), (300, 590, 400, 1))
         # innere Linie
-        pygame.draw.rect(screen, (0, 0, 0), (400, 230, 200, 1))
-        pygame.draw.rect(screen, (0, 0, 0), (600, 230, 1, 200))
-        pygame.draw.rect(screen, (0, 0, 0), (400, 230, 1, 200))
-        pygame.draw.rect(screen, (0, 0, 0), (400, 430, 200, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (400, 290, 200, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (600, 290, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (400, 290, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (400, 490, 200, 1))
         # innere Linie
-        pygame.draw.rect(screen, (0, 0, 0), (500, 430, 1, 200))
-        pygame.draw.rect(screen, (0, 0, 0), (500, 30, 1, 200))
-        pygame.draw.rect(screen, (0, 0, 0), (200, 330, 200, 1))
-        pygame.draw.rect(screen, (0, 0, 0), (600, 330, 200, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (500, 490, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (500, 90, 1, 200))
+        pygame.draw.rect(screen, (0, 0, 0), (200, 390, 200, 1))
+        pygame.draw.rect(screen, (0, 0, 0), (600, 390, 200, 1))
 
 
         # Inhalt von screen anzeigen.
@@ -827,12 +826,31 @@ def playboard():
 
         button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
 
-        stein("", 185, 15, 30, 30, beige, light_green, action="drücken")
-        stein("", 485, 15, 30, 30, white, light_green, action="drücken")
-        stein("A3", 785, 15, 30, 30, white, light_green, action="drücken")
-        stein("B1", 285, 115, 30, 30, white, light_green, action="drücken")
-        stein("B2", 485, 115, 30, 30, white, light_green, action="drücken")
-        stein("B3", 685, 115, 30, 30, white, light_green, action="drücken")
+        stein("A1", 185, 75, 30, 30, yellow, light_green, action="drücken")#A1
+        stein("A2", 485, 75, 30, 30, yellow, light_green, action="drücken")#A2
+        stein("A3", 785, 75, 30, 30, yellow, light_green, action="drücken")#A3
+        stein("A4", 285, 175, 30, 30, yellow, light_green, action="drücken")#A4
+        stein("A5", 485, 175, 30, 30, yellow, light_green, action="drücken")#A5
+        stein("A6", 685, 175, 30, 30, yellow, light_green, action="drücken")#A6
+        stein("A7", 385, 275, 30, 30, yellow, light_green, action="drücken")#A7
+        stein("A8", 485, 275, 30, 30, yellow, light_green, action="drücken")#A8
+        stein("A9", 585, 275, 30, 30, yellow, light_green, action="drücken")#A9
+        stein("A10", 185, 375, 30, 30, yellow, light_green, action="drücken")#A10
+        stein("A11", 285, 375, 30, 30, yellow, light_green, action="drücken")#A11
+        stein("A12", 385, 375, 30, 30, yellow, light_green, action="drücken")#A12
+        stein("A13", 585, 375, 30, 30, yellow, light_green, action="drücken")#A13
+        stein("A14", 685, 375, 30, 30, yellow, light_green, action="drücken")#A14
+        stein("A15", 785, 375, 30, 30, yellow, light_green, action="drücken")#A15
+        stein("A16", 385, 475, 30, 30, yellow, light_green, action="drücken")#A16
+        stein("A17", 485, 475, 30, 30, yellow, light_green, action="drücken")#A17
+        stein("A18", 585, 475, 30, 30, yellow, light_green, action="drücken")#A18
+        stein("A19", 285, 575, 30, 30, yellow, light_green, action="drücken")#A19
+        stein("A20", 485, 575, 30, 30, yellow, light_green, action="drücken")#A20
+        stein("A21", 685, 575, 30, 30, yellow, light_green, action="drücken")#A21
+        stein("A22", 185, 675, 30, 30, yellow, light_green, action="drücken")#A22
+        stein("A23", 485, 675, 30, 30, yellow, light_green, action="drücken")#A23
+        stein("A24", 785, 675, 30, 30, yellow, light_green, action="drücken")#A24
+
 
         pygame.display.update()
 
@@ -843,7 +861,6 @@ if __name__ == '__playboard__':
 
     pygame.quit()
     quit()
-
 place_and_remove(aktueller_spieler)
 """game_intro()
 
