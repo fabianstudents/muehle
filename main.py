@@ -2,15 +2,11 @@ import pygame
 
 pygame.init()
 
-display_width = 800
-display_height = 600
+display_width = 1000
+display_height = 800
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 
-
-
-# pygame.mixer.music.load("boom.wav")
-# pygame.mixer.music.play(-1)
 
 
 pygame.display.set_caption('Mühle Spiel - FHNW Programmieren')
@@ -27,7 +23,7 @@ light_yellow = (255, 255, 0)
 green = (34, 177, 76)
 light_green = (0, 255, 0)
 
-clock = pygame.time.Clock()
+
 
 smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
@@ -66,11 +62,9 @@ def game_controls():
                 quit()
 
         gameDisplay.fill(white)
-        message_to_screen("Controls", green, -100, size="large")
-        message_to_screen("Fire: Spacebar", black, -30)
-        message_to_screen("Move Turret: Up and Down arrows", black, 10)
-        message_to_screen("Move Tank: Left and Right arrows", black, 50)
-        message_to_screen("Pause: P", black, 90)
+        message_to_screen("Link zu Regeln", green, -200, size="large")
+        message_to_screen("www.irgendetwas.ch", black, -30)
+
 
         button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
         button("Hauptmenü", 350, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
@@ -78,7 +72,7 @@ def game_controls():
 
         pygame.display.update()
 
-        clock.tick(15)
+
 
 
 def button(text, x, y, width, height, inactive_color, active_color, action=None):
@@ -96,7 +90,7 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 game_controls()
 
             if action == "spielen":
-                gameLoop()
+                playboard()
 
             if action == "Hauptmenü":
                 game_intro()
@@ -117,9 +111,9 @@ def game_intro():
                 quit()
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_c:
+                if event.key == pygame.K_c: # Start Spiel durch Taste 'C'
                     intro = False
-                elif event.key == pygame.K_q:
+                elif event.key == pygame.K_q: # Abbruch Hauptmenü durch Taste 'Q'
 
                     pygame.quit()
                     quit()
@@ -128,8 +122,7 @@ def game_intro():
         message_to_screen("Willkommen zu Mühle", green, -100, size="medium")
         message_to_screen("Das ist ein Mühle-Spiel", black, -30)
         message_to_screen("programmiert von Studenten der FHNW.", black, 10)
-        # message_to_screen("The more enemies you destroy, the harder they get.", black, 50)
-        # message_to_screen("Press C to play, P to pause or Q to quit",black,180)
+
 
         button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
         button("Regeln", 350, 500, 150, 50, yellow, light_yellow, action="Regeln")
@@ -137,10 +130,10 @@ def game_intro():
 
         pygame.display.update()
 
-        clock.tick(15)
 
 
-def game_over():
+
+def game_over(): #Muss noch angepasst werden!!
     game_over = True
 
     while game_over:
@@ -160,10 +153,10 @@ def game_over():
 
         pygame.display.update()
 
-        clock.tick(15)
 
 
-def you_win():
+
+def you_win(): #Muss noch angepasst werden!!
     win = True
 
     while win:
@@ -183,32 +176,12 @@ def you_win():
 
         pygame.display.update()
 
-        clock.tick(15)
+
 
 def gameLoop():
     gameExit = False
     gameOver = False
-    FPS = 15
 
-    #player_health = 100
-    #enemy_health = 100
-
-    #barrier_width = 50
-
-    #mainTankX = display_width * 0.9
-    #mainTankY = display_height * 0.9
-    #tankMove = 0
-    #currentTurPos = 0
-    #changeTur = 0
-
-    #enemyTankX = display_width * 0.1
-    #enemyTankY = display_height * 0.9
-
-    #fire_power = 50
-    #power_change = 0
-
-    #xlocation = (display_width / 2) + random.randint(-0.1 * display_width, 0.1 * display_width)
-    #randomHeight = random.randrange(display_height * 0.1, display_height * 0.6)
 
     while not gameExit:
 
@@ -236,115 +209,11 @@ def gameLoop():
             if event.type == pygame.QUIT:
                 gameExit = True
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    tankMove = -5
-
-                elif event.key == pygame.K_RIGHT:
-                    tankMove = 5
-
-                elif event.key == pygame.K_UP:
-                    changeTur = 1
-
-                elif event.key == pygame.K_DOWN:
-                    changeTur = -1
-
-                elif event.key == pygame.K_p:
-                    pause()
-
-                elif event.key == pygame.K_SPACE:
-
-                    damage = fireShell(gun, mainTankX, mainTankY, currentTurPos, fire_power, xlocation, barrier_width,
-                                       randomHeight, enemyTankX, enemyTankY)
-                    enemy_health -= damage
-
-                    possibleMovement = ['f', 'r']
-                    moveIndex = random.randrange(0, 2)
-
-                    for x in range(random.randrange(0, 10)):
-
-                        if display_width * 0.3 > enemyTankX > display_width * 0.03:
-                            if possibleMovement[moveIndex] == "f":
-                                enemyTankX += 5
-                            elif possibleMovement[moveIndex] == "r":
-                                enemyTankX -= 5
-
-                            gameDisplay.fill(white)
-                            health_bars(player_health, enemy_health)
-                            gun = tank(mainTankX, mainTankY, currentTurPos)
-                            enemy_gun = enemy_tank(enemyTankX, enemyTankY, 8)
-                            fire_power += power_change
-
-                            power(fire_power)
-
-                            barrier(xlocation, randomHeight, barrier_width)
-                            gameDisplay.fill(green,
-                                             rect=[0, display_height - ground_height, display_width, ground_height])
-                            pygame.display.update()
-
-                            clock.tick(FPS)
-
-                    damage = e_fireShell(enemy_gun, enemyTankX, enemyTankY, 8, 50, xlocation, barrier_width,
-                                         randomHeight, mainTankX, mainTankY)
-                    player_health -= damage
-
-                elif event.key == pygame.K_a:
-                    power_change = -1
-                elif event.key == pygame.K_d:
-                    power_change = 1
-
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    tankMove = 0
-
-                if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                    changeTur = 0
-
-                if event.key == pygame.K_a or event.key == pygame.K_d:
-                    power_change = 0
-
-        mainTankX += tankMove
-
-        currentTurPos += changeTur
-
-        if currentTurPos > 8:
-            currentTurPos = 8
-        elif currentTurPos < 0:
-            currentTurPos = 0
-
-        if mainTankX - (tankWidth / 2) < xlocation + barrier_width:
-            mainTankX += 5
-
-        gameDisplay.fill(white)
-        health_bars(player_health, enemy_health)
-        gun = tank(mainTankX, mainTankY, currentTurPos)
-        enemy_gun = enemy_tank(enemyTankX, enemyTankY, 8)
-
-        fire_power += power_change
-
-        if fire_power > 100:
-            fire_power = 100
-        elif fire_power < 1:
-            fire_power = 1
-
-        power(fire_power)
-
-        barrier(xlocation, randomHeight, barrier_width)
-        gameDisplay.fill(green, rect=[0, display_height - ground_height, display_width, ground_height])
-        pygame.display.update()
-
-        if player_health < 1:
-            game_over()
-        elif enemy_health < 1:
-            you_win()
-        clock.tick(FPS)
-
     pygame.quit()
     quit()
 
 
-game_intro()
-gameLoop()
+
 
 
 
@@ -481,11 +350,11 @@ def place_and_remove():
 
 
 
-def main():
+def playboard():
     # Initialisieren aller Pygame-Module und
     # Fenster erstellen (wir bekommen eine Surface, die den Bildschirm repräsentiert).
     pygame.init()
-    screen = pygame.display.set_mode((1000, 800))
+    screen = pygame.display.set_mode((display_width, display_height))
 
     # Titel des Fensters setzen, Mauszeiger nicht verstecken und Tastendrücke wiederholt senden.
     pygame.display.set_caption("Mühle Spiel - FHNW Programmieren")
@@ -543,6 +412,10 @@ def main():
 
 
 # Überprüfen, ob dieses Modul als Programm läuft und nicht in einem anderen Modul importiert wird.
-if __name__ == '__main__':
+if __name__ == '__playboard__':
     # Unsere Main-Funktion aufrufen.
     place_and_remove()
+
+game_intro()
+
+playboard()
