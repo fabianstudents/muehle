@@ -22,7 +22,7 @@ light_yellow = (255, 255, 0)
 
 green = (34, 177, 76)
 light_green = (0, 255, 0)
-
+beige = (207, 185, 151)
 
 
 smallfont = pygame.font.SysFont("comicsansms", 25)
@@ -99,6 +99,33 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
         pygame.draw.rect(gameDisplay, inactive_color, (x, y, width, height))
 
     text_to_button(text, black, x, y, width, height)
+
+
+def stein(text, x, y, width, height, inactive_color, active_color, action=None):
+    cur = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+    # print(click)
+    if x + width > cur[0] > x and y + height > cur[1] > y:
+        pygame.draw.rect(gameDisplay, active_color, (x, y, width, height))
+        if click[0] == 1 and action != None:
+            if action == "verlassen":
+                pygame.quit()
+                quit()
+
+            if action == "drücken":
+                game_controls()
+
+            if action == "spielen":
+                playboard()
+
+            if action == "A12":
+                game_intro()
+
+    else:
+        pygame.draw.rect(gameDisplay, inactive_color, (x, y, width, height))
+
+    text_to_button(text, black, x, y, width, height)
+
 
 def game_intro():
     intro = True
@@ -372,7 +399,7 @@ def playboard():
         clock.tick(30)
 
         # screen-Surface Baige
-        screen.fill((207, 185, 151))
+        screen.fill(beige)
 
         # Alle aufgelaufenen Events holen und abarbeiten.
         for event in pygame.event.get():
@@ -410,11 +437,25 @@ def playboard():
         pygame.display.flip()
 
 
+        button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
+
+        stein("", 185, 15, 30, 30, beige, light_green, action="drücken")
+        stein("", 485, 15, 30, 30, white, light_green, action="drücken")
+        stein("A3", 785, 15, 30, 30, white, light_green, action="drücken")
+        stein("B1", 285, 115, 30, 30, white, light_green, action="drücken")
+        stein("B2", 485, 115, 30, 30, white, light_green, action="drücken")
+        stein("B3", 685, 115, 30, 30, white, light_green, action="drücken")
+
+        pygame.display.update()
+
 
 # Überprüfen, ob dieses Modul als Programm läuft und nicht in einem anderen Modul importiert wird.
 if __name__ == '__playboard__':
     # Unsere Main-Funktion aufrufen.
     place_and_remove()
+
+    pygame.quit()
+    quit()
 
 game_intro()
 
