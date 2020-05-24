@@ -124,6 +124,7 @@ def game_intro():
                     pygame.quit()
                     quit()
 
+
         gameDisplay.fill(white)
         message_to_screen("Willkommen zu Mühle", green, -100, size="medium")
         message_to_screen("Das ist ein Mühle-Spiel", black, -30)
@@ -150,7 +151,7 @@ def playboard():
     pygame.mouse.set_visible(1)
     pygame.key.set_repeat(1, 30)
 
-    # Clock-Objekt erstellen, das wir benötigen, um die Framerate zu begrenzen.
+    # Clock-Objekt erstellen, das wir benötigen, um die Fragmentrate zu begrenzen.
     clock = pygame.time.Clock()
 
 
@@ -623,8 +624,8 @@ def playboard():
         pygame.draw.rect(screen, (0, 0, 0), (600, 330, 200, 1))
 
         button("Hauptmenü", 840, 80, 150, 50, beige, light_yellow, action="Hauptmenü")
-        button("verlassen", 840, 150, 150, 50, beige, light_red, action="verlassen")
-
+        button("verlassen", 840, 220, 150, 50, beige, light_red, action="verlassen")
+        button("restart", 840, 150, 150, 50, beige, light_green, action="spielen")
         button("Steine", 45, 80, 80, 50, beige, beige, action="")
 
 
@@ -649,17 +650,6 @@ if __name__ == '__playboard__':
 game_intro()
 
 playboard()
-
-
-
-
-
-
-
-
-
-
-
 
 
 
