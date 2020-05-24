@@ -7,11 +7,13 @@ display_height = 800
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 
+spieleingabe = 1
 spielerw = 9
 spielerb = 9
 action = None
 aktueller_spieler = "w"
 neue_muehle = 0
+steinberg = 18
 
 pygame.display.set_caption('Mühle Spiel - FHNW Programmieren')
 
@@ -27,6 +29,8 @@ light_yellow = (255, 255, 0)
 green = (34, 177, 76)
 light_green = (0, 255, 0)
 beige = (207, 185, 151)
+
+spielsteine = [beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige]
 
 smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
@@ -93,7 +97,7 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 game_controls()
 
             if action == "spielen":
-                playboard(action, aktueller_spieler, neue_muehle)
+                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
 
             if action == "Hauptmenü":
                 game_intro()
@@ -105,7 +109,7 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
     text_to_button(text, black, x, y, width, height)
 
 
-def stein(neue_muehle, aktueller_spieler, text, x, y, width, height, inactive_color, active_color, action):
+def stein(spieleingabe, neue_muehle, aktueller_spieler, text, x, y, width, height, inactive_color, active_color, action):
     cur = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     # print(click)
@@ -190,77 +194,77 @@ def stein(neue_muehle, aktueller_spieler, text, x, y, width, height, inactive_co
                 place_and_remove(aktueller_spieler, action, spieleingabe)
 
             if action == "A1" and neue_muehle == 1:
-                spieleingabe = 1
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 1
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A2" and neue_muehle == 1:
                 stein_gegner = 2
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner)
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A3" and neue_muehle == 1:
                 stein_gegner = 3
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner)
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A4" and neue_muehle == 1:
-                spieleingabe = 4
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 4
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A5" and neue_muehle == 1:
-                spieleingabe = 5
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 5
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A6" and neue_muehle == 1:
-                spieleingabe = 6
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 6
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A7" and neue_muehle == 1:
-                spieleingabe = 7
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 7
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A8" and neue_muehle == 1:
-                spieleingabe = 8
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 8
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A9" and neue_muehle == 1:
-                spieleingabe = 9
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 9
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A10" and neue_muehle == 1:
-                spieleingabe = 10
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 10
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A11" and neue_muehle == 1:
-                spieleingabe = 11
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 11
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A12" and neue_muehle == 1:
-                spieleingabe = 12
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 12
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A13" and neue_muehle == 1:
-                spieleingabe = 13
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 13
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A14" and neue_muehle == 1:
-                spieleingabe = 14
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 14
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A15" and neue_muehle == 1:
-                spieleingabe = 15
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 15
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A16" and neue_muehle == 1:
-                spieleingabe = 16
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 16
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A17" and neue_muehle == 1:
-                spieleingabe = 17
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 17
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A18" and neue_muehle == 1:
-                spieleingabe = 18
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 18
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A19" and neue_muehle == 1:
-                spieleingabe = 19
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 19
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A20" and neue_muehle == 1:
-                spieleingabe = 20
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 20
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A21" and neue_muehle == 1:
-                spieleingabe = 21
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 21
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "22" and neue_muehle == 1:
-                spieleingabe = 22
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 22
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A23" and neue_muehle == 1:
-                spieleingabe = 23
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 23
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
             if action == "A24" and neue_muehle == 1:
-                spieleingabe = 24
-                stein_entfernen(aktueller_spieler, spieleingabe, action, neue_muehle)
+                stein_gegner = 24
+                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
 
             """if action == "spielen":
                 playboard()
@@ -487,7 +491,7 @@ def muehle_erkennen():
             print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
 
 """
-def muehle_erkennen(aktueller_spieler, action, neue_muehle):
+def muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe):
     neue_muehle = 0
     if spielfeld[0] == spielfeld[1] == spielfeld[2] == aktueller_spieler and alle_muehlen[0] == 0:
         alle_muehlen[0] = 1
@@ -514,7 +518,8 @@ def muehle_erkennen(aktueller_spieler, action, neue_muehle):
         alle_muehlen[4] = 1
         neue_muehle = 1
         print("Neue Mühle 5")
-        playboard(action, aktueller_spieler, neue_muehle)
+        print("Du darfst einen Stein entfernen")
+        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[5] == spielfeld[13] == spielfeld[20] == aktueller_spieler and alle_muehlen[5] == 0:
         alle_muehlen[5] = 1
         neue_muehle = 1
@@ -575,387 +580,505 @@ def muehle_erkennen(aktueller_spieler, action, neue_muehle):
 
 
 
-def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner):
-    """while neue_muehle == 1:"""
+def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe):
+    while neue_muehle == 1:
+        beige = (207,185, 151)
+        steinberg = 18
+        stein_entfernen = int(stein_gegner)
+        print("bis hier")
+        print(stein_gegner)
 
-    """spieleingabe = int(input("Bitte gib einen zu entferenden Stein an"))
-    playboard(action, aktueller_spieler, neue_muehle)"""
-    stein_entfernen = int(stein_gegner)
-    print("bis hier")
-    print(stein_entfernen)
-    if stein_entfernen <= 24:
-        if stein_entfernen == 1:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[0] == 0 and alle_muehlen[3] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+        if stein_entfernen <= 24:
+            if stein_entfernen == 1:
+                if spielfeld[(stein_entfernen - 1)] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[0] == 0 and alle_muehlen[3] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            spielsteine[stein_entfernen - 1] = beige
+                            pygame.display.update()
+                            neue_muehle = 0
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, spieleingabe)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 2:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[0] == 0 and alle_muehlen[13] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 2:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[0] == 0 and alle_muehlen[13] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 3:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[0] == 0 and alle_muehlen[1] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 3:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[0] == 0 and alle_muehlen[1] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 4:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[7] == 0 and alle_muehlen[4] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 4:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[7] == 0 and alle_muehlen[4] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 5:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[4] == 0 and alle_muehlen[12] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 5:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[4] == 0 and alle_muehlen[12] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 6:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[4] == 0 and alle_muehlen[5] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 6:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[4] == 0 and alle_muehlen[5] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 7:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[11] == 0 and alle_muehlen[8] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 7:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[11] == 0 and alle_muehlen[8] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 8:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[8] == 0 and alle_muehlen[12] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 8:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[8] == 0 and alle_muehlen[12] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 9:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[4] == 0 and alle_muehlen[4] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 9:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[4] == 0 and alle_muehlen[4] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 10:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[3] == 0 and alle_muehlen[15] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 10:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[3] == 0 and alle_muehlen[15] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 11:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[7] == 0 and alle_muehlen[15] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 11:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[7] == 0 and alle_muehlen[15] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 12:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[11] == 0 and alle_muehlen[15] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 12:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[11] == 0 and alle_muehlen[15] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 13:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[9] == 0 and alle_muehlen[13] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 13:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[9] == 0 and alle_muehlen[13] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 14:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[5] == 0 and alle_muehlen[13] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 14:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[5] == 0 and alle_muehlen[13] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 15:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[1] == 0 and alle_muehlen[13] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 15:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[1] == 0 and alle_muehlen[13] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 16:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[10] == 0 and alle_muehlen[11] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 16:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[10] == 0 and alle_muehlen[11] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 17:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[10] == 0 and alle_muehlen[14] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 17:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[10] == 0 and alle_muehlen[14] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 18:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[10] == 0 and alle_muehlen[9] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 18:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[10] == 0 and alle_muehlen[9] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 19:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[7] == 0 and alle_muehlen[6] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 19:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[7] == 0 and alle_muehlen[6] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 20:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[6] == 0 and alle_muehlen[14] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 20:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[6] == 0 and alle_muehlen[14] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 21:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[6] == 0 and alle_muehlen[5] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 21:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[6] == 0 and alle_muehlen[5] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 22:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[3] == 0 and alle_muehlen[2] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 22:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[3] == 0 and alle_muehlen[2] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 23:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[2] == 0 and alle_muehlen[14] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 23:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[2] == 0 and alle_muehlen[14] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
-            else:
-                print("Dies ist dein eigener Stein, du Depp!!")
-                playboard(action, aktueller_spieler, neue_muehle)
-        elif stein_entfernen == 24:
-            if spielfeld[stein_entfernen - 1] != aktueller_spieler:
-                if spielfeld[stein_entfernen - 1] != "x":
-                    if alle_muehlen[2] == 0 and alle_muehlen[1] == 0:
-                        spielfeld[stein_entfernen - 1] = "x"
-                        neue_muehle = 0
+            elif stein_entfernen == 24:
+                if spielfeld[stein_entfernen - 1] != aktueller_spieler:
+                    if spielfeld[stein_entfernen - 1] != "x":
+                        if alle_muehlen[2] == 0 and alle_muehlen[1] == 0:
+                            spielfeld[stein_entfernen - 1] = "x"
+                            neue_muehle = 0
+                            spielsteine[stein_entfernen - 1] = beige
+                            if steinberg > 0:
+                                place_and_remove(aktueller_spieler, action, neue_muehle)
+                            else:
+                                move_and_remove(aktueller_spieler, action, neue_muehle)
+                        else:
+                            print("Stein befindet sich in einer Mühle!")
+                            playboard(action, aktueller_spieler, neue_muehle)
                     else:
-                        print("Stein befindet sich in einer Mühle!")
+                        print("Dieses Feld ist nicht belegt!")
                         playboard(action, aktueller_spieler, neue_muehle)
                 else:
-                    print("Dieses Feld ist nicht belegt!")
+                    print("Dies ist dein eigener Stein, du Depp!!")
                     playboard(action, aktueller_spieler, neue_muehle)
             else:
-                print("Dies ist dein eigener Stein, du Depp!!")
+                print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
                 playboard(action, aktueller_spieler, neue_muehle)
-
-
-
-
-
-        else:
-            print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
-            playboard(action, aktueller_spieler, neue_muehle)
 
 
 def place_and_remove(aktueller_spieler, action, spieleingabe):
     steinberg = 18
+    white = (255, 255, 255)
+    black = (0, 0, 0)
     """aktueller_spieler = "w"   """
     """cur = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()"""
@@ -970,30 +1093,32 @@ def place_and_remove(aktueller_spieler, action, spieleingabe):
                 spielfeld[spieleingabe - 1] = aktueller_spieler
                 steinberg = steinberg -1
                 # mühle erkennen
-                muehle_erkennen(aktueller_spieler, action, neue_muehle)
+                muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe)
                 #spieler wechsel
                 if aktueller_spieler == "w":
+                    spielsteine[spieleingabe - 1] = white
                     aktueller_spieler = "b"
                     print(spielfeld)
-                    print("IF")
                     action = None
-                    playboard(action, aktueller_spieler, neue_muehle)
+                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
                     pygame.display.update()
                 else:
+                    spielsteine[spieleingabe - 1] = black
                     aktueller_spieler = "w"
                     print(spielfeld)
-                    print("Else")
                     action = None
-                    playboard(action, aktueller_spieler, neue_muehle)
+                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
                     pygame.display.update()
             else:
                 print("Platz bereits belegt, bitte einen anderes Feld auswählen.")
+                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
         else:
             print(spielfeld)
             print(spieleingabe)
             print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
+            playboard(action, aktueller_spieler, neue_muehle)
 
-def move_and_remove(aktueller_spieler, action):
+def move_and_remove(aktueller_spieler, action, neue_muehle):
     aktueller_spieler = "w"
     game = 0
     while game == 0:
@@ -1004,15 +1129,17 @@ def move_and_remove(aktueller_spieler, action):
                 spielfeld[steinsetzen - 1] = aktueller_spieler
                 spielfeld[steinwaehlen - 1] = "x"
                 if aktueller_spieler == "w":
+                    spielsteine[steinwaehlen -1] = white
                     aktueller_spieler = "b"
                     print(spielfeld)
                     print(spieleingabe)
                 else:
+                    spielsteine[steinwaehlen - 1] = black
                     aktueller_spieler = "w"
                     print(spielfeld)
                     print(spieleingabe)
 
-def playboard(action, aktueller_spieler, neue_muehle):
+def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
     # Initialisieren aller Pygame-Module und
     # Fenster erstellen (wir bekommen eine Surface, die den Bildschirm repräsentiert).
     """pygame.init()"""
@@ -1075,30 +1202,30 @@ def playboard(action, aktueller_spieler, neue_muehle):
 
         button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
 
-        stein(neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, yellow, light_green, action="A1")  #A1
-        stein(neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, yellow, light_green, action="A2")  #A2
-        stein(neue_muehle, aktueller_spieler,"A3", 785, 75, 30, 30, yellow, light_green, action="A3")  #A3
-        stein(neue_muehle, aktueller_spieler,"A4", 285, 175, 30, 30, yellow, light_green, action="A4")  #A4
-        stein(neue_muehle, aktueller_spieler, "A5", 485, 175, 30, 30, yellow, light_green, action="A5")  #A5
-        stein(neue_muehle, aktueller_spieler, "A6", 685, 175, 30, 30, yellow, light_green, action="A6")  #A6
-        stein(neue_muehle, aktueller_spieler, "A7", 385, 275, 30, 30, yellow, light_green, action="A7")  #A7
-        stein(neue_muehle, aktueller_spieler, "A8", 485, 275, 30, 30, yellow, light_green, action="A8")  #A8
-        stein(neue_muehle, aktueller_spieler, "A9", 585, 275, 30, 30, yellow, light_green, action="A9")  #A9
-        stein(neue_muehle, aktueller_spieler, "A10", 185, 375, 30, 30, yellow, light_green, action="A10")  #A10
-        stein(neue_muehle, aktueller_spieler, "A11", 285, 375, 30, 30, yellow, light_green, action="A11")  #A11
-        stein(neue_muehle, aktueller_spieler, "A12", 385, 375, 30, 30, yellow, light_green, action="A12")  #A12
-        stein(neue_muehle, aktueller_spieler, "A13", 585, 375, 30, 30, yellow, light_green, action="A13")  #A13
-        stein(neue_muehle, aktueller_spieler, "A14", 685, 375, 30, 30, yellow, light_green, action="A14")  #A14
-        stein(neue_muehle, aktueller_spieler, "A15", 785, 375, 30, 30, yellow, light_green, action="A15")  #A15
-        stein(neue_muehle, aktueller_spieler, "A16", 385, 475, 30, 30, yellow, light_green, action="A16")  #A16
-        stein(neue_muehle, aktueller_spieler, "A17", 485, 475, 30, 30, yellow, light_green, action="A17")  #A17
-        stein(neue_muehle, aktueller_spieler, "A18", 585, 475, 30, 30, yellow, light_green, action="A18")  #A18
-        stein(neue_muehle, aktueller_spieler, "A19", 285, 575, 30, 30, yellow, light_green, action="A19")  #A19
-        stein(neue_muehle, aktueller_spieler, "A20", 485, 575, 30, 30, yellow, light_green, action="A20")  #A20
-        stein(neue_muehle, aktueller_spieler, "A21", 685, 575, 30, 30, yellow, light_green, action="A21")  #A21
-        stein(neue_muehle, aktueller_spieler, "A22", 185, 675, 30, 30, yellow, light_green, action="A22")  #A22
-        stein(neue_muehle, aktueller_spieler, "A23", 485, 675, 30, 30, yellow, light_green, action="A23")  #A23
-        stein(neue_muehle, aktueller_spieler, "A24", 785, 675, 30, 30, yellow, light_green, action="A24")  #A24
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
+        stein(spieleingabe, neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
+        stein(spieleingabe, neue_muehle, aktueller_spieler,"A3", 785, 75, 30, 30, spielsteine[2], light_green, action="A3")  #A3
+        stein(spieleingabe, neue_muehle, aktueller_spieler,"A4", 285, 175, 30, 30, spielsteine[3], light_green, action="A4")  #A4
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A5", 485, 175, 30, 30, spielsteine[4], light_green, action="A5")  #A5
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A6", 685, 175, 30, 30, spielsteine[5], light_green, action="A6")  #A6
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A7", 385, 275, 30, 30, spielsteine[6], light_green, action="A7")  #A7
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A8", 485, 275, 30, 30, spielsteine[7], light_green, action="A8")  #A8
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A9", 585, 275, 30, 30, spielsteine[8], light_green, action="A9")  #A9
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A10", 185, 375, 30, 30, spielsteine[9], light_green, action="A10")  #A10
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A11", 285, 375, 30, 30, spielsteine[10], light_green, action="A11")  #A11
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A12", 385, 375, 30, 30, spielsteine[11], light_green, action="A12")  #A12
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A13", 585, 375, 30, 30, spielsteine[12], light_green, action="A13")  #A13
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A14", 685, 375, 30, 30, spielsteine[13], light_green, action="A14")  #A14
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A15", 785, 375, 30, 30, spielsteine[14], light_green, action="A15")  #A15
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A16", 385, 475, 30, 30, spielsteine[15], light_green, action="A16")  #A16
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A17", 485, 475, 30, 30, spielsteine[16], light_green, action="A17")  #A17
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A18", 585, 475, 30, 30, spielsteine[17], light_green, action="A18")  #A18
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A19", 285, 575, 30, 30, spielsteine[18], light_green, action="A19")  #A19
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A20", 485, 575, 30, 30, spielsteine[19], light_green, action="A20")  #A20
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A21", 685, 575, 30, 30, spielsteine[20], light_green, action="A21")  #A21
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A22", 185, 675, 30, 30, spielsteine[21], light_green, action="A22")  #A22
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A23", 485, 675, 30, 30, spielsteine[22], light_green, action="A23")  #A23
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "A24", 785, 675, 30, 30, spielsteine[23], light_green, action="A24")  #A24
 
 
         pygame.display.update()
