@@ -92,7 +92,7 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 game_controls()
 
             if action == "spielen":
-                playboard(action)
+                playboard(action, aktueller_spieler)
 
             if action == "Hauptmenü":
                 game_intro()
@@ -370,67 +370,82 @@ def muehle_erkennen(aktueller_spieler, action):
         alle_muehlen[0] = 1
         neue_muehle = 1
         print("Neue Mühle 1")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[2] == spielfeld[14] == spielfeld[23] == aktueller_spieler and alle_muehlen[1] == 0:
         alle_muehlen[1] = 1
         neue_muehle = 1
         print("Neue Mühle 2")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[21] == spielfeld[22] == spielfeld[23] == aktueller_spieler and alle_muehlen[2] == 0:
         alle_muehlen[2] = 1
         neue_muehle = 1
         print("Neue Mühle 3")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[0] == spielfeld[9] == spielfeld[21] == aktueller_spieler and alle_muehlen[3] == 0:
         alle_muehlen[3] = 1
         neue_muehle = 1
         print("Neue Mühle 4")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[3] == spielfeld[4] == spielfeld[5] == aktueller_spieler and alle_muehlen[4] == 0:
         alle_muehlen[4] = 1
         neue_muehle = 1
         print("Neue Mühle 5")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[5] == spielfeld[13] == spielfeld[20] == aktueller_spieler and alle_muehlen[5] == 0:
         alle_muehlen[5] = 1
         neue_muehle = 1
         print("Neue Mühle 6")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[18] == spielfeld[19] == spielfeld[20] == aktueller_spieler and alle_muehlen[6] == 0:
         alle_muehlen[6] = 1
         neue_muehle = 1
         print("Neue Mühle 7")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[3] == spielfeld[10] == spielfeld[18] == aktueller_spieler and alle_muehlen[7] == 0:
         alle_muehlen[7] = 1
         neue_muehle = 1
         print("Neue Mühle 8")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[6] == spielfeld[7] == spielfeld[8] == aktueller_spieler and alle_muehlen[8] == 0:
         alle_muehlen[8] = 1
         neue_muehle = 1
         print("Neue Mühle 9")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[8] == spielfeld[12] == spielfeld[17] == aktueller_spieler and alle_muehlen[9] == 0:
         alle_muehlen[9] = 1
         neue_muehle = 1
         print("Neue Mühle 10")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[15] == spielfeld[16] == spielfeld[17] == aktueller_spieler and alle_muehlen[10] == 0:
         alle_muehlen[10] = 1
         neue_muehle = 1
         print("Neue Mühle 11")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[6] == spielfeld[11] == spielfeld[15] == aktueller_spieler and alle_muehlen[11] == 0:
         alle_muehlen[11] = 1
         neue_muehle = 1
         print("Neue Mühle 12")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[1] == spielfeld[4] == spielfeld[7] == aktueller_spieler and alle_muehlen[12] == 0:
         alle_muehlen[12] = 1
         neue_muehle = 1
         print("Neue Mühle 13")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[12] == spielfeld[13] == spielfeld[14] == aktueller_spieler and alle_muehlen[13] == 0:
         alle_muehlen[13] = 1
         neue_muehle = 1
         print("Neue Mühle 14 ")
-
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[16] == spielfeld[19] == spielfeld[22] == aktueller_spieler and alle_muehlen[14] == 0:
         alle_muehlen[14] = 1
         neue_muehle = 1
         print("Neue Mühle 15")
+        stein_entfernen(aktueller_spieler, action)
     elif spielfeld[9] == spielfeld[10] == spielfeld[11] == aktueller_spieler and alle_muehlen[15] == 0:
         alle_muehlen[15] = 1
         neue_muehle = 1
-        print("Neue Mühl1 16")
+        print("Neue Mühle 16")
+        stein_entfernen(aktueller_spieler, action)
     else:
         print("keine neue Mühle")
 
@@ -737,10 +752,10 @@ def stein_entfernen(action, spieleingabe):
             print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
 
 action = None
-
+aktueller_spieler = "w"
 def place_and_remove(aktueller_spieler, action, spieleingabe):
     steinberg = 18
-    aktueller_spieler = "w"
+    """aktueller_spieler = "w"   """
     """cur = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()"""
     # print(click)
@@ -796,10 +811,10 @@ def move_and_remove(aktueller_spieler, action):
                     print(spielfeld)
                     print(spieleingabe)
 
-def playboard(action):
+def playboard(action, aktueller_spieler):
     # Initialisieren aller Pygame-Module und
     # Fenster erstellen (wir bekommen eine Surface, die den Bildschirm repräsentiert).
-    pygame.init()
+    """pygame.init()"""
     screen = pygame.display.set_mode((display_width, display_height))
 
     # Titel des Fensters setzen, Mauszeiger nicht verstecken und Tastendrücke wiederholt senden.
@@ -897,4 +912,4 @@ if __name__ == '__playboard__':
 
 game_intro()
 
-playboard(action)
+playboard(action, aktueller_spieler)
