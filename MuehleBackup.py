@@ -1,5 +1,6 @@
 import pygame
 
+
 pygame.init()
 
 display_width = 1000
@@ -19,6 +20,7 @@ light_red = (255, 0, 0)
 
 yellow = (200, 200, 0)
 light_yellow = (255, 255, 0)
+blue = (0,0,255)
 
 green = (34, 177, 76)
 light_green = (0, 255, 0)
@@ -65,7 +67,7 @@ def game_controls():
 
         gameDisplay.fill(white)
         message_to_screen("Link zu Regeln", green, -200, size="large")
-        message_to_screen("www.irgendetwas.ch", black, -30)
+        message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", blue, -30)
 
 
         button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
@@ -97,12 +99,11 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
             if action == "Hauptmenü":
                 game_intro()
 
+
     else:
         pygame.draw.rect(gameDisplay, inactive_color, (x, y, width, height))
 
     text_to_button(text, black, x, y, width, height)
-
-
 
 
 def game_intro():
