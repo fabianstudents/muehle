@@ -622,10 +622,10 @@ def playboard():
         pygame.draw.rect(screen, (0, 0, 0), (200, 330, 200, 1))
         pygame.draw.rect(screen, (0, 0, 0), (600, 330, 200, 1))
 
-        button("Hauptmenü", 840, 80, 150, 50, yellow, light_yellow, action="Hauptmenü")
-        button("verlassen", 840, 150, 150, 50, red, light_red, action="verlassen")
+        button("Hauptmenü", 840, 80, 150, 50, beige, light_yellow, action="Hauptmenü")
+        button("verlassen", 840, 150, 150, 50, beige, light_red, action="verlassen")
 
-        button("Steine", 45, 80, 80, 50, green, green, action="")
+        button("Steine", 45, 80, 80, 50, beige, beige, action="")
 
 
         # Inhalt von screen anzeigen.
