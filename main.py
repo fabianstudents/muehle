@@ -6,11 +6,12 @@ display_width = 1000
 display_height = 800
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-aktueller_spieler = None
+
 spielerw = 9
 spielerb = 9
-
-
+action = None
+aktueller_spieler = "w"
+neue_muehle = 0
 
 pygame.display.set_caption('Mühle Spiel - FHNW Programmieren')
 
@@ -92,7 +93,7 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 game_controls()
 
             if action == "spielen":
-                playboard(action, aktueller_spieler)
+                playboard(action, aktueller_spieler, neue_muehle)
 
             if action == "Hauptmenü":
                 game_intro()
@@ -104,7 +105,7 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
     text_to_button(text, black, x, y, width, height)
 
 
-def stein(text, x, y, width, height, inactive_color, active_color, action):
+def stein(neue_muehle, aktueller_spieler, text, x, y, width, height, inactive_color, active_color, action):
     cur = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     # print(click)
@@ -115,7 +116,7 @@ def stein(text, x, y, width, height, inactive_color, active_color, action):
                 pygame.quit()
                 quit()
 
-            if action == "A1":
+            if action == "A1" and neue_muehle == 0:
                 spieleingabe = 1
                 place_and_remove(aktueller_spieler, action, spieleingabe)
             if action == "A2":
@@ -124,7 +125,7 @@ def stein(text, x, y, width, height, inactive_color, active_color, action):
             if action == "A3":
                 spieleingabe = 3
                 place_and_remove(aktueller_spieler, action, spieleingabe)
-            if action == "A4":
+            if action == "A4" and neue_muehle == 0:
                 spieleingabe = 4
                 place_and_remove(aktueller_spieler, action, spieleingabe)
             if action == "A5":
@@ -135,8 +136,11 @@ def stein(text, x, y, width, height, inactive_color, active_color, action):
                 place_and_remove(aktueller_spieler, action, spieleingabe)
             if action == "A1" and neue_muehle == 1:
                 spieleingabe = 1
-                stein_entfernen(spieleingabe, action)
-
+                stein_entfernen(spieleingabe, action, neue_muehle)
+            if action == "A4" and neue_muehle == 1:
+                spieleingabe = 4
+                stein_gegner = 4
+                stein_entfernen(spieleingabe, action, neue_muehle, stein_gegner)
 
 
             if action == "spielen":
@@ -370,90 +374,97 @@ def muehle_erkennen(aktueller_spieler, action):
         alle_muehlen[0] = 1
         neue_muehle = 1
         print("Neue Mühle 1")
-        stein_entfernen(aktueller_spieler, action)
+        print("Du darfst einen Stein entfernen")
+        playboard(action, aktueller_spieler, neue_muehle)
+
+        """stein_entfernen(aktueller_spieler, action, neue_muehle)"""
     elif spielfeld[2] == spielfeld[14] == spielfeld[23] == aktueller_spieler and alle_muehlen[1] == 0:
         alle_muehlen[1] = 1
         neue_muehle = 1
         print("Neue Mühle 2")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[21] == spielfeld[22] == spielfeld[23] == aktueller_spieler and alle_muehlen[2] == 0:
         alle_muehlen[2] = 1
         neue_muehle = 1
         print("Neue Mühle 3")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[0] == spielfeld[9] == spielfeld[21] == aktueller_spieler and alle_muehlen[3] == 0:
         alle_muehlen[3] = 1
         neue_muehle = 1
         print("Neue Mühle 4")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[3] == spielfeld[4] == spielfeld[5] == aktueller_spieler and alle_muehlen[4] == 0:
         alle_muehlen[4] = 1
         neue_muehle = 1
         print("Neue Mühle 5")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[5] == spielfeld[13] == spielfeld[20] == aktueller_spieler and alle_muehlen[5] == 0:
         alle_muehlen[5] = 1
         neue_muehle = 1
         print("Neue Mühle 6")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[18] == spielfeld[19] == spielfeld[20] == aktueller_spieler and alle_muehlen[6] == 0:
         alle_muehlen[6] = 1
         neue_muehle = 1
         print("Neue Mühle 7")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[3] == spielfeld[10] == spielfeld[18] == aktueller_spieler and alle_muehlen[7] == 0:
         alle_muehlen[7] = 1
         neue_muehle = 1
         print("Neue Mühle 8")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[6] == spielfeld[7] == spielfeld[8] == aktueller_spieler and alle_muehlen[8] == 0:
         alle_muehlen[8] = 1
         neue_muehle = 1
         print("Neue Mühle 9")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[8] == spielfeld[12] == spielfeld[17] == aktueller_spieler and alle_muehlen[9] == 0:
         alle_muehlen[9] = 1
         neue_muehle = 1
         print("Neue Mühle 10")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[15] == spielfeld[16] == spielfeld[17] == aktueller_spieler and alle_muehlen[10] == 0:
         alle_muehlen[10] = 1
         neue_muehle = 1
         print("Neue Mühle 11")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[6] == spielfeld[11] == spielfeld[15] == aktueller_spieler and alle_muehlen[11] == 0:
         alle_muehlen[11] = 1
         neue_muehle = 1
         print("Neue Mühle 12")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[1] == spielfeld[4] == spielfeld[7] == aktueller_spieler and alle_muehlen[12] == 0:
         alle_muehlen[12] = 1
         neue_muehle = 1
         print("Neue Mühle 13")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[12] == spielfeld[13] == spielfeld[14] == aktueller_spieler and alle_muehlen[13] == 0:
         alle_muehlen[13] = 1
         neue_muehle = 1
         print("Neue Mühle 14 ")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[16] == spielfeld[19] == spielfeld[22] == aktueller_spieler and alle_muehlen[14] == 0:
         alle_muehlen[14] = 1
         neue_muehle = 1
         print("Neue Mühle 15")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     elif spielfeld[9] == spielfeld[10] == spielfeld[11] == aktueller_spieler and alle_muehlen[15] == 0:
         alle_muehlen[15] = 1
         neue_muehle = 1
         print("Neue Mühle 16")
-        stein_entfernen(aktueller_spieler, action)
+        stein_entfernen(aktueller_spieler, action, neue_muehle)
     else:
         print("keine neue Mühle")
 
 
 
-def stein_entfernen(action, spieleingabe):
+def stein_entfernen(action, spieleingabe, neue_muehle, stein_gegner):
     while neue_muehle == 1:
-        stein_entfernen = spieleingabe
+
+        """spieleingabe = int(input("Bitte gib einen zu entferenden Stein an"))
+        playboard(action, aktueller_spieler, neue_muehle)"""
+        stein_entfernen = int(stein_gegner)
+        print("bis hier")
         if stein_entfernen <= 24:
             if stein_entfernen == 1:
                 if stein_entfernen != aktueller_spieler:
@@ -751,8 +762,7 @@ def stein_entfernen(action, spieleingabe):
         else:
             print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
 
-action = None
-aktueller_spieler = "w"
+
 def place_and_remove(aktueller_spieler, action, spieleingabe):
     steinberg = 18
     """aktueller_spieler = "w"   """
@@ -776,14 +786,14 @@ def place_and_remove(aktueller_spieler, action, spieleingabe):
                     print(spielfeld)
                     print(spieleingabe)
                     action = None
-                    playboard(action, aktueller_spieler)
+                    playboard(action, aktueller_spieler, neue_muehle)
                     pygame.display.update()
                 else:
                     aktueller_spieler = "w"
                     print(spielfeld)
                     print(spieleingabe)
                     action = None
-                    playboard(action, aktueller_spieler)
+                    playboard(action, aktueller_spieler, neue_muehle)
                     pygame.display.update()
             else:
                 print("Platz bereits belegt, bitte einen anderes Feld auswählen.")
@@ -811,7 +821,7 @@ def move_and_remove(aktueller_spieler, action):
                     print(spielfeld)
                     print(spieleingabe)
 
-def playboard(action, aktueller_spieler):
+def playboard(action, aktueller_spieler, neue_muehle):
     # Initialisieren aller Pygame-Module und
     # Fenster erstellen (wir bekommen eine Surface, die den Bildschirm repräsentiert).
     """pygame.init()"""
@@ -874,30 +884,30 @@ def playboard(action, aktueller_spieler):
 
         button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
 
-        stein("A1", 185, 75, 30, 30, yellow, light_green, action="A1")  #A1
-        stein("A2", 485, 75, 30, 30, yellow, light_green, action="A2")  #A2
-        stein("A3", 785, 75, 30, 30, yellow, light_green, action="A3")  #A3
-        stein("A4", 285, 175, 30, 30, yellow, light_green, action="A4")  #A4
-        stein("A5", 485, 175, 30, 30, yellow, light_green, action="A5")  #A5
-        stein("A6", 685, 175, 30, 30, yellow, light_green, action="A6")  #A6
-        stein("A7", 385, 275, 30, 30, yellow, light_green, action="A7")  #A7
-        stein("A8", 485, 275, 30, 30, yellow, light_green, action="A8")  #A8
-        stein("A9", 585, 275, 30, 30, yellow, light_green, action="A9")  #A9
-        stein("A10", 185, 375, 30, 30, yellow, light_green, action="drücken")  #A10
-        stein("A11", 285, 375, 30, 30, yellow, light_green, action="drücken")  #A11
-        stein("A12", 385, 375, 30, 30, yellow, light_green, action="drücken")  #A12
-        stein("A13", 585, 375, 30, 30, yellow, light_green, action="drücken")  #A13
-        stein("A14", 685, 375, 30, 30, yellow, light_green, action="drücken")  #A14
-        stein("A15", 785, 375, 30, 30, yellow, light_green, action="drücken")  #A15
-        stein("A16", 385, 475, 30, 30, yellow, light_green, action="drücken")  #A16
-        stein("A17", 485, 475, 30, 30, yellow, light_green, action="drücken")  #A17
-        stein("A18", 585, 475, 30, 30, yellow, light_green, action="drücken")  #A18
-        stein("A19", 285, 575, 30, 30, yellow, light_green, action="drücken")  #A19
-        stein("A20", 485, 575, 30, 30, yellow, light_green, action="drücken")  #A20
-        stein("A21", 685, 575, 30, 30, yellow, light_green, action="drücken")  #A21
-        stein("A22", 185, 675, 30, 30, yellow, light_green, action="drücken")  #A22
-        stein("A23", 485, 675, 30, 30, yellow, light_green, action="drücken")  #A23
-        stein("A24", 785, 675, 30, 30, yellow, light_green, action="drücken")  #A24
+        stein(neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, yellow, light_green, action="A1")  #A1
+        stein(neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, yellow, light_green, action="A2")  #A2
+        stein(neue_muehle, aktueller_spieler,"A3", 785, 75, 30, 30, yellow, light_green, action="A3")  #A3
+        stein(neue_muehle, aktueller_spieler,"A4", 285, 175, 30, 30, yellow, light_green, action="A4")  #A4
+        stein(neue_muehle, aktueller_spieler, "A5", 485, 175, 30, 30, yellow, light_green, action="A5")  #A5
+        stein(neue_muehle, aktueller_spieler, "A6", 685, 175, 30, 30, yellow, light_green, action="A6")  #A6
+        stein(neue_muehle, aktueller_spieler, "A7", 385, 275, 30, 30, yellow, light_green, action="A7")  #A7
+        stein(neue_muehle, aktueller_spieler, "A8", 485, 275, 30, 30, yellow, light_green, action="A8")  #A8
+        stein(neue_muehle, aktueller_spieler, "A9", 585, 275, 30, 30, yellow, light_green, action="A9")  #A9
+        stein(neue_muehle, aktueller_spieler, "A10", 185, 375, 30, 30, yellow, light_green, action="A10")  #A10
+        stein(neue_muehle, aktueller_spieler, "A11", 285, 375, 30, 30, yellow, light_green, action="A11")  #A11
+        stein(neue_muehle, aktueller_spieler, "A12", 385, 375, 30, 30, yellow, light_green, action="A12")  #A12
+        stein(neue_muehle, aktueller_spieler, "A13", 585, 375, 30, 30, yellow, light_green, action="A13")  #A13
+        stein(neue_muehle, aktueller_spieler, "A14", 685, 375, 30, 30, yellow, light_green, action="A14")  #A14
+        stein(neue_muehle, aktueller_spieler, "A15", 785, 375, 30, 30, yellow, light_green, action="A15")  #A15
+        stein(neue_muehle, aktueller_spieler, "A16", 385, 475, 30, 30, yellow, light_green, action="A16")  #A16
+        stein(neue_muehle, aktueller_spieler, "A17", 485, 475, 30, 30, yellow, light_green, action="A17")  #A17
+        stein(neue_muehle, aktueller_spieler, "A18", 585, 475, 30, 30, yellow, light_green, action="A18")  #A18
+        stein(neue_muehle, aktueller_spieler, "A19", 285, 575, 30, 30, yellow, light_green, action="A19")  #A19
+        stein(neue_muehle, aktueller_spieler, "A20", 485, 575, 30, 30, yellow, light_green, action="A20")  #A20
+        stein(neue_muehle, aktueller_spieler, "A21", 685, 575, 30, 30, yellow, light_green, action="A21")  #A21
+        stein(neue_muehle, aktueller_spieler, "A22", 185, 675, 30, 30, yellow, light_green, action="A22")  #A22
+        stein(neue_muehle, aktueller_spieler, "A23", 485, 675, 30, 30, yellow, light_green, action="A23")  #A23
+        stein(neue_muehle, aktueller_spieler, "A24", 785, 675, 30, 30, yellow, light_green, action="A24")  #A24
 
 
         pygame.display.update()
@@ -912,4 +922,4 @@ if __name__ == '__playboard__':
 
 game_intro()
 
-playboard(action, aktueller_spieler)
+playboard(action, aktueller_spieler, neue_muehle)
