@@ -130,49 +130,12 @@ def game_intro():
         message_to_screen("programmiert von Studenten der FHNW.", black, 10)
 
 
-        button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
-        button("Regeln", 350, 500, 150, 50, yellow, light_yellow, action="Regeln")
-        button("verlassen", 550, 500, 150, 50, red, light_red, action="verlassen")
+        button("spielen", 200, 500, 150, 50, green, light_green, action="spielen")
+        button("Regeln", 400, 500, 150, 50, yellow, light_yellow, action="Regeln")
+        button("verlassen", 600, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
-
-
-
-
-def gameLoop():
-    gameExit = False
-    gameOver = False
-
-
-    while not gameExit:
-
-        if gameOver == True:
-            # gameDisplay.fill(white)
-            message_to_screen("Game Over", red, -50, size="large")
-            message_to_screen("Press C to play again or Q to exit", black, 50)
-            pygame.display.update()
-            while gameOver == True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        gameExit = True
-                        gameOver = False
-
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_c:
-                            gameLoop()
-                        elif event.key == pygame.K_q:
-
-                            gameExit = True
-                            gameOver = False
-
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                gameExit = True
-
-    pygame.quit()
-    quit()
 
 
 
@@ -659,10 +622,10 @@ def playboard():
         pygame.draw.rect(screen, (0, 0, 0), (200, 330, 200, 1))
         pygame.draw.rect(screen, (0, 0, 0), (600, 330, 200, 1))
 
-        button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
+        button("Hauptmenü", 840, 80, 150, 50, yellow, light_yellow, action="Hauptmenü")
+        button("verlassen", 840, 150, 150, 50, red, light_red, action="verlassen")
 
-
-
+        button("Steine", 45, 80, 80, 50, green, green, action="")
 
 
         # Inhalt von screen anzeigen.
