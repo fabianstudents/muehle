@@ -242,6 +242,78 @@ def stein(spieleingabe, neue_muehle, aktueller_spieler, text, x, y, width, heigh
                         switch[1] = spieleingabe
                         switch[0] = 1
                         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A1" and neue_muehle == 1:
+                        stein_gegner = 1
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A2" and neue_muehle == 1:
+                        stein_gegner = 2
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A3" and neue_muehle == 1:
+                        stein_gegner = 3
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A4" and neue_muehle == 1:
+                        stein_gegner = 4
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A5" and neue_muehle == 1:
+                        stein_gegner = 5
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A6" and neue_muehle == 1:
+                        stein_gegner = 6
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A7" and neue_muehle == 1:
+                        stein_gegner = 7
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A8" and neue_muehle == 1:
+                        stein_gegner = 8
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A9" and neue_muehle == 1:
+                        stein_gegner = 9
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A10" and neue_muehle == 1:
+                        stein_gegner = 10
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A11" and neue_muehle == 1:
+                        stein_gegner = 11
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A12" and neue_muehle == 1:
+                        stein_gegner = 12
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A13" and neue_muehle == 1:
+                        stein_gegner = 13
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A14" and neue_muehle == 1:
+                        stein_gegner = 14
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A15" and neue_muehle == 1:
+                        stein_gegner = 15
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A16" and neue_muehle == 1:
+                        stein_gegner = 16
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A17" and neue_muehle == 1:
+                        stein_gegner = 17
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A18" and neue_muehle == 1:
+                        stein_gegner = 18
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A19" and neue_muehle == 1:
+                        stein_gegner = 19
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A20" and neue_muehle == 1:
+                        stein_gegner = 20
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A21" and neue_muehle == 1:
+                        stein_gegner = 21
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "22" and neue_muehle == 1:
+                        stein_gegner = 22
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A23" and neue_muehle == 1:
+                        stein_gegner = 23
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A24" and neue_muehle == 1:
+                        stein_gegner = 24
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
                 else:
                     if action == "A1" and neue_muehle == 0:
                         spieleingabe = 1
@@ -339,6 +411,79 @@ def stein(spieleingabe, neue_muehle, aktueller_spieler, text, x, y, width, heigh
                         spieleingabe = 24
                         switch[2] = spieleingabe
                         move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+
+                    if action == "A1" and neue_muehle == 1:
+                        stein_gegner = 1
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A2" and neue_muehle == 1:
+                        stein_gegner = 2
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A3" and neue_muehle == 1:
+                        stein_gegner = 3
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A4" and neue_muehle == 1:
+                        stein_gegner = 4
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A5" and neue_muehle == 1:
+                        stein_gegner = 5
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A6" and neue_muehle == 1:
+                        stein_gegner = 6
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A7" and neue_muehle == 1:
+                        stein_gegner = 7
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A8" and neue_muehle == 1:
+                        stein_gegner = 8
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A9" and neue_muehle == 1:
+                        stein_gegner = 9
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A10" and neue_muehle == 1:
+                        stein_gegner = 10
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A11" and neue_muehle == 1:
+                        stein_gegner = 11
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A12" and neue_muehle == 1:
+                        stein_gegner = 12
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A13" and neue_muehle == 1:
+                        stein_gegner = 13
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A14" and neue_muehle == 1:
+                        stein_gegner = 14
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A15" and neue_muehle == 1:
+                        stein_gegner = 15
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A16" and neue_muehle == 1:
+                        stein_gegner = 16
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A17" and neue_muehle == 1:
+                        stein_gegner = 17
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A18" and neue_muehle == 1:
+                        stein_gegner = 18
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A19" and neue_muehle == 1:
+                        stein_gegner = 19
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A20" and neue_muehle == 1:
+                        stein_gegner = 20
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A21" and neue_muehle == 1:
+                        stein_gegner = 21
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "22" and neue_muehle == 1:
+                        stein_gegner = 22
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A23" and neue_muehle == 1:
+                        stein_gegner = 23
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
+                    if action == "A24" and neue_muehle == 1:
+                        stein_gegner = 24
+                        stein_entfernen(aktueller_spieler, action, neue_muehle, stein_gegner, spieleingabe)
 
 
             else:
@@ -670,7 +815,7 @@ alle_muehlen = [muehle1, muehle2, muehle3, muehle4, muehle5, muehle6, muehle7, m
 steineberg = 18
 spieler1 = 9
 spieler2 = 9
-steinebank = [3, spieler1, spieler2]
+steinebank = [6, spieler1, spieler2]
 switch = [0, 0, 0]
 textanzeige = ["Steine platzieren"]
 """
@@ -843,7 +988,6 @@ def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spielei
         beige = (207,185, 151)
         steinberg = 18
         stein_entfernen = int(stein_gegner)
-        print("bis hier")
         print(stein_gegner)
         if stein_entfernen <= 24:
             if stein_entfernen == 1:
@@ -854,11 +998,12 @@ def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spielei
                             spielsteine[stein_entfernen - 1] = beige
                             pygame.display.update()
                             neue_muehle = 0
-                            if steinberg > 0:
+                            if steinebank[0] > 0:
                                 spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe)
                                 place_and_remove(aktueller_spieler, action, spieleingabe)
                             else:
                                 spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe)
+                                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
                                 move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
                         else:
                             print("Stein befindet sich in einer Mühle!")
@@ -1427,7 +1572,6 @@ def place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
                 playboard(action, aktueller_spieler, neue_muehle)
 
 def move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
-    aktueller_spieler = "w"
     textanzeige[0] = "Steine schieben"
     pygame.display.update()
     game = 0
@@ -1438,11 +1582,18 @@ def move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
                 spielfeld[switch[2]-1] = aktueller_spieler
                 einfaerben(aktueller_spieler, neue_muehle, spieleingabe)
                 switch[0] = 0
+                muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe)
+
+                if aktueller_spieler == "w":
+                    aktueller_spieler = "b"
+                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                else:
+                    aktueller_spieler = "w"
+                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+            else:
+                switch[0] = 0
                 playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
 
-            else:
-                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-                switch[0] = 0
         else:
             switch[0] = 0
             playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
