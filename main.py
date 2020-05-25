@@ -120,157 +120,378 @@ def stein(spieleingabe, neue_muehle, aktueller_spieler, text, x, y, width, heigh
                 pygame.quit()
                 quit()
 
-            if action == "A1" and neue_muehle == 0:
-                spieleingabe = 1
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A2" and neue_muehle == 0:
-                spieleingabe = 2
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A3" and neue_muehle == 0:
-                spieleingabe = 3
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A4" and neue_muehle == 0:
-                spieleingabe = 4
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A5" and neue_muehle == 0:
-                spieleingabe = 5
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A6" and neue_muehle == 0:
-                spieleingabe = 6
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A7" and neue_muehle == 0:
-                spieleingabe = 7
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A8" and neue_muehle == 0:
-                spieleingabe = 8
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A9" and neue_muehle == 0:
-                spieleingabe = 9
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A10" and neue_muehle == 0:
-                spieleingabe = 10
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A11" and neue_muehle == 0:
-                spieleingabe = 11
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A12" and neue_muehle == 0:
-                spieleingabe = 12
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A13" and neue_muehle == 0:
-                spieleingabe = 13
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A14" and neue_muehle == 0:
-                spieleingabe = 14
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A15" and neue_muehle == 0:
-                spieleingabe = 15
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A16" and neue_muehle == 0:
-                spieleingabe = 16
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A17" and neue_muehle == 0:
-                spieleingabe = 17
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A18" and neue_muehle == 0:
-                spieleingabe = 18
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A19" and neue_muehle == 0:
-                spieleingabe = 19
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A20" and neue_muehle == 0:
-                spieleingabe = 20
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A21" and neue_muehle == 0:
-                spieleingabe = 21
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A22" and neue_muehle == 0:
-                spieleingabe = 22
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A23" and neue_muehle == 0:
-                spieleingabe = 23
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-            if action == "A24" and neue_muehle == 0:
-                spieleingabe = 24
-                place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+            if steinebank[0] == 0:
+                if switch[0] == 0:
+                    if action == "A1" and neue_muehle == 0:
+                        spieleingabe = 1
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A2" and neue_muehle == 0:
+                        spieleingabe = 2
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A3" and neue_muehle == 0:
+                        spieleingabe = 3
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A4" and neue_muehle == 0:
+                        spieleingabe = 4
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A5" and neue_muehle == 0:
+                        spieleingabe = 5
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A6" and neue_muehle == 0:
+                        spieleingabe = 6
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A7" and neue_muehle == 0:
+                        spieleingabe = 7
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A8" and neue_muehle == 0:
+                        spieleingabe = 8
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A9" and neue_muehle == 0:
+                        spieleingabe = 9
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A10" and neue_muehle == 0:
+                        spieleingabe = 10
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A11" and neue_muehle == 0:
+                        spieleingabe = 11
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A12" and neue_muehle == 0:
+                        spieleingabe = 12
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A13" and neue_muehle == 0:
+                        spieleingabe = 13
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A14" and neue_muehle == 0:
+                        spieleingabe = 14
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A15" and neue_muehle == 0:
+                        spieleingabe = 15
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A16" and neue_muehle == 0:
+                        spieleingabe = 16
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A17" and neue_muehle == 0:
+                        spieleingabe = 17
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A18" and neue_muehle == 0:
+                        spieleingabe = 18
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A19" and neue_muehle == 0:
+                        spieleingabe = 19
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A20" and neue_muehle == 0:
+                        spieleingabe = 20
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A21" and neue_muehle == 0:
+                        spieleingabe = 21
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A22" and neue_muehle == 0:
+                        spieleingabe = 22
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A23" and neue_muehle == 0:
+                        spieleingabe = 23
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                    if action == "A24" and neue_muehle == 0:
+                        spieleingabe = 24
+                        switch[1] = spieleingabe
+                        switch[0] = 1
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                else:
+                    if action == "A1" and neue_muehle == 0:
+                        spieleingabe = 1
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A2" and neue_muehle == 0:
+                        spieleingabe = 2
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A3" and neue_muehle == 0:
+                        spieleingabe = 3
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A4" and neue_muehle == 0:
+                        spieleingabe = 4
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A5" and neue_muehle == 0:
+                        spieleingabe = 5
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A6" and neue_muehle == 0:
+                        spieleingabe = 6
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A7" and neue_muehle == 0:
+                        spieleingabe = 7
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A8" and neue_muehle == 0:
+                        spieleingabe = 8
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A9" and neue_muehle == 0:
+                        spieleingabe = 9
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A10" and neue_muehle == 0:
+                        spieleingabe = 10
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A11" and neue_muehle == 0:
+                        spieleingabe = 11
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A12" and neue_muehle == 0:
+                        spieleingabe = 12
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A13" and neue_muehle == 0:
+                        spieleingabe = 13
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A14" and neue_muehle == 0:
+                        spieleingabe = 14
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A15" and neue_muehle == 0:
+                        spieleingabe = 15
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A16" and neue_muehle == 0:
+                        spieleingabe = 16
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A17" and neue_muehle == 0:
+                        spieleingabe = 17
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A18" and neue_muehle == 0:
+                        spieleingabe = 18
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A19" and neue_muehle == 0:
+                        spieleingabe = 19
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A20" and neue_muehle == 0:
+                        spieleingabe = 20
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A21" and neue_muehle == 0:
+                        spieleingabe = 21
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A22" and neue_muehle == 0:
+                        spieleingabe = 22
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A23" and neue_muehle == 0:
+                        spieleingabe = 23
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    if action == "A24" and neue_muehle == 0:
+                        spieleingabe = 24
+                        switch[2] = spieleingabe
+                        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
 
-            if action == "A1" and neue_muehle == 1:
-                stein_gegner = 1
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A2" and neue_muehle == 1:
-                stein_gegner = 2
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A3" and neue_muehle == 1:
-                stein_gegner = 3
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A4" and neue_muehle == 1:
-                stein_gegner = 4
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A5" and neue_muehle == 1:
-                stein_gegner = 5
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A6" and neue_muehle == 1:
-                stein_gegner = 6
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A7" and neue_muehle == 1:
-                stein_gegner = 7
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A8" and neue_muehle == 1:
-                stein_gegner = 8
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A9" and neue_muehle == 1:
-                stein_gegner = 9
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A10" and neue_muehle == 1:
-                stein_gegner = 10
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A11" and neue_muehle == 1:
-                stein_gegner = 11
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A12" and neue_muehle == 1:
-                stein_gegner = 12
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A13" and neue_muehle == 1:
-                stein_gegner = 13
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A14" and neue_muehle == 1:
-                stein_gegner = 14
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A15" and neue_muehle == 1:
-                stein_gegner = 15
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A16" and neue_muehle == 1:
-                stein_gegner = 16
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A17" and neue_muehle == 1:
-                stein_gegner = 17
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A18" and neue_muehle == 1:
-                stein_gegner = 18
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A19" and neue_muehle == 1:
-                stein_gegner = 19
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A20" and neue_muehle == 1:
-                stein_gegner = 20
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A21" and neue_muehle == 1:
-                stein_gegner = 21
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "22" and neue_muehle == 1:
-                stein_gegner = 22
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A23" and neue_muehle == 1:
-                stein_gegner = 23
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
-            if action == "A24" and neue_muehle == 1:
-                stein_gegner = 24
-                stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
 
-            """if action == "spielen":
-                playboard()
+            else:
+                if action == "verlassen":
+                    pygame.quit()
+                    quit()
+                if action == "A1" and neue_muehle == 0:
+                    spieleingabe = 1
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A2" and neue_muehle == 0:
+                    spieleingabe = 2
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A3" and neue_muehle == 0:
+                    spieleingabe = 3
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A4" and neue_muehle == 0:
+                    spieleingabe = 4
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A5" and neue_muehle == 0:
+                    spieleingabe = 5
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A6" and neue_muehle == 0:
+                    spieleingabe = 6
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A7" and neue_muehle == 0:
+                    spieleingabe = 7
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A8" and neue_muehle == 0:
+                    spieleingabe = 8
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A9" and neue_muehle == 0:
+                    spieleingabe = 9
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A10" and neue_muehle == 0:
+                    spieleingabe = 10
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A11" and neue_muehle == 0:
+                    spieleingabe = 11
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A12" and neue_muehle == 0:
+                    spieleingabe = 12
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A13" and neue_muehle == 0:
+                    spieleingabe = 13
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A14" and neue_muehle == 0:
+                    spieleingabe = 14
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A15" and neue_muehle == 0:
+                    spieleingabe = 15
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A16" and neue_muehle == 0:
+                    spieleingabe = 16
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A17" and neue_muehle == 0:
+                    spieleingabe = 17
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A18" and neue_muehle == 0:
+                    spieleingabe = 18
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A19" and neue_muehle == 0:
+                    spieleingabe = 19
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A20" and neue_muehle == 0:
+                    spieleingabe = 20
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A21" and neue_muehle == 0:
+                    spieleingabe = 21
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A22" and neue_muehle == 0:
+                    spieleingabe = 22
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A23" and neue_muehle == 0:
+                    spieleingabe = 23
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                if action == "A24" and neue_muehle == 0:
+                    spieleingabe = 24
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
 
-            if action == "A12":
-                game_intro()"""
+                if action == "A1" and neue_muehle == 1:
+                    stein_gegner = 1
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A2" and neue_muehle == 1:
+                    stein_gegner = 2
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A3" and neue_muehle == 1:
+                    stein_gegner = 3
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A4" and neue_muehle == 1:
+                    stein_gegner = 4
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A5" and neue_muehle == 1:
+                    stein_gegner = 5
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A6" and neue_muehle == 1:
+                    stein_gegner = 6
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A7" and neue_muehle == 1:
+                    stein_gegner = 7
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A8" and neue_muehle == 1:
+                    stein_gegner = 8
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A9" and neue_muehle == 1:
+                    stein_gegner = 9
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A10" and neue_muehle == 1:
+                    stein_gegner = 10
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A11" and neue_muehle == 1:
+                    stein_gegner = 11
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A12" and neue_muehle == 1:
+                    stein_gegner = 12
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A13" and neue_muehle == 1:
+                    stein_gegner = 13
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A14" and neue_muehle == 1:
+                    stein_gegner = 14
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A15" and neue_muehle == 1:
+                    stein_gegner = 15
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A16" and neue_muehle == 1:
+                    stein_gegner = 16
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A17" and neue_muehle == 1:
+                    stein_gegner = 17
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A18" and neue_muehle == 1:
+                    stein_gegner = 18
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A19" and neue_muehle == 1:
+                    stein_gegner = 19
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A20" and neue_muehle == 1:
+                    stein_gegner = 20
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A21" and neue_muehle == 1:
+                    stein_gegner = 21
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "22" and neue_muehle == 1:
+                    stein_gegner = 22
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A23" and neue_muehle == 1:
+                    stein_gegner = 23
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+                if action == "A24" and neue_muehle == 1:
+                    stein_gegner = 24
+                    stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe)
+
+
 
     else:
         pygame.draw.rect(gameDisplay, inactive_color, (x, y, width, height))
@@ -446,7 +667,12 @@ muehle15 = 0
 muehle16 = 0
 
 alle_muehlen = [muehle1, muehle2, muehle3, muehle4, muehle5, muehle6, muehle7, muehle8, muehle9, muehle10, muehle11, muehle12, muehle13, muehle14, muehle15, muehle16]
-
+steineberg = 18
+spieler1 = 9
+spieler2 = 9
+steinebank = [3, spieler1, spieler2]
+switch = [0, 0, 0]
+textanzeige = ["Steine platzieren"]
 """
 def muehle_erkennen():
     neue_muehle = 0
@@ -503,7 +729,7 @@ def muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe):
         alle_muehlen[1] = 1
         neue_muehle = 1
         print("Neue Mühle 2")
-        splayboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[21] == spielfeld[22] == spielfeld[23] == aktueller_spieler and alle_muehlen[2] == 0:
         alle_muehlen[2] = 1
         neue_muehle = 1
@@ -591,15 +817,27 @@ def spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe):
         place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
 
 def einfaerben(aktueller_spieler, neue_muehle, spieleingabe):
-    if aktueller_spieler == "w":
-        spielsteine[spieleingabe - 1] = white
-        aktueller_spieler = "b"
-        pygame.display.update()
-    else:
-        spielsteine[spieleingabe - 1] = black
-        aktueller_spieler = "w"
-        pygame.display.update()
 
+    if steinebank[0] == 0:
+        if aktueller_spieler == "w":
+            spielsteine[switch[2] - 1] = white
+            spielsteine[switch[1] - 1] = beige
+            aktueller_spieler = "b"
+            pygame.display.update()
+        else:
+            spielsteine[switch[2] - 1] = black
+            spielsteine[switch[1] - 1] = beige
+            aktueller_spieler = "w"
+            pygame.display.update()
+    else:
+        if aktueller_spieler == "w":
+            spielsteine[spieleingabe - 1] = white
+            aktueller_spieler = "b"
+            pygame.display.update()
+        else:
+            spielsteine[spieleingabe - 1] = black
+            aktueller_spieler = "w"
+            pygame.display.update()
 def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spieleingabe):
     while neue_muehle == 1:
         beige = (207,185, 151)
@@ -1143,52 +1381,75 @@ def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spielei
 
 
 def place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
-    steinberg = 18
+
     white = (255, 255, 255)
     black = (0, 0, 0)
     """aktueller_spieler = "w"   """
     """cur = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()"""
     # print(click)
-    while steinberg > 0:
-        """spieleingabe = int(input("Geben Sie ein Feld zwischen 1 und 24 an."))"""
-        """if x + width > cur[0] > x and y + height > cur[1] > y:
-            pygame.draw.rect(gameDisplay, active_color, (x, y, width, height))"""
-        print(alle_muehlen)
-        if spieleingabe <= 24:
-            if spielfeld[spieleingabe-1] == "x":
-                spielfeld[spieleingabe - 1] = aktueller_spieler
-                steinberg = steinberg -1
-                einfaerben(aktueller_spieler, neue_muehle, spieleingabe)
-                # mühle erkennen
-                muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe)
-                #spieler wechsel
-                if aktueller_spieler == "w":
-                    aktueller_spieler = "b"
-                    print(spielfeld)
-                    action = None
-                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-                    pygame.display.update()
-                else:
-                    aktueller_spieler = "w"
-                    print(spielfeld)
-                    action = None
-                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-                    pygame.display.update()
-            else:
-                print("Platz bereits belegt, bitte einen anderes Feld auswählen.")
-                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-        else:
-            print(spielfeld)
-            print(spieleingabe)
-            print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
-            playboard(action, aktueller_spieler, neue_muehle)
+    if steinebank[0] == 0:
+        move_and_remove(aktueller_spieler, action, neue_muehle)
+    else:
 
-def move_and_remove(aktueller_spieler, action, neue_muehle):
+        while steinebank[0] > 0:
+            """spieleingabe = int(input("Geben Sie ein Feld zwischen 1 und 24 an."))"""
+            """if x + width > cur[0] > x and y + height > cur[1] > y:
+                pygame.draw.rect(gameDisplay, active_color, (x, y, width, height))"""
+            print(alle_muehlen)
+            if spieleingabe <= 24:
+                if spielfeld[spieleingabe-1] == "x":
+                    spielfeld[spieleingabe - 1] = aktueller_spieler
+                    einfaerben(aktueller_spieler, neue_muehle, spieleingabe)
+                    steinebank[0] = steinebank[0] - 1
+                    # mühle erkennen
+                    muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe)
+                    #spieler wechsel
+                    if aktueller_spieler == "w":
+                        aktueller_spieler = "b"
+                        print(spielfeld)
+                        action = None
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                        pygame.display.update()
+                    else:
+                        aktueller_spieler = "w"
+                        print(spielfeld)
+                        action = None
+                        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                        pygame.display.update()
+                else:
+                    print("Platz bereits belegt, bitte einen anderes Feld auswählen.")
+                    playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+            else:
+                print(spielfeld)
+                print(spieleingabe)
+                print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
+                playboard(action, aktueller_spieler, neue_muehle)
+
+def move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
     aktueller_spieler = "w"
+    textanzeige[0] = "Steine schieben"
+    pygame.display.update()
     game = 0
     while game == 0:
-        steinwaehlen = int(input("Wähle den gewünschten Stein aus! \n"))
+        if spielfeld[switch[1]-1] == aktueller_spieler:
+            if spielfeld[switch[2]-1] == "x":
+                spielfeld[switch[1] - 1] = "x"
+                spielfeld[switch[2]-1] = aktueller_spieler
+                einfaerben(aktueller_spieler, neue_muehle, spieleingabe)
+                switch[0] = 0
+                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+
+            else:
+                playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+                switch[0] = 0
+        else:
+            switch[0] = 0
+            playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+
+
+
+        """steinwaehlen = int(input("Wähle den gewünschten Stein aus! \n"))
         if spielfeld[steinwaehlen - 1] == aktueller_spieler:
             steinsetzen = int(input("Wo hin soll der Stein gelegt werden?"))
             if spielfeld[steinsetzen - 1] == "x":
@@ -1203,7 +1464,7 @@ def move_and_remove(aktueller_spieler, action, neue_muehle):
                     spielsteine[steinwaehlen - 1] = black
                     aktueller_spieler = "w"
                     print(spielfeld)
-                    print(spieleingabe)
+                    print(spieleingabe)"""
 
 def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
     # Initialisieren aller Pygame-Module und
@@ -1267,6 +1528,10 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
         pygame.display.flip()
 
         button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
+        if steinebank[0] == 0:
+            textanzeige[0] = "Steine schieben"
+
+        button(textanzeige[0], 20, 125, 150, 50, yellow, red, action="")
 
         stein(spieleingabe, neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
         stein(spieleingabe, neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
