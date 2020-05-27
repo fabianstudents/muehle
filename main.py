@@ -100,6 +100,11 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
 
             if action == "Hauptmenü":
+                spielfeld[0:23] = ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]
+                spielsteine[0:23] = [beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige, beige]
+                steinebank[0:2] = [18, 9, 9]
+                switch[0:2] = [0, 0, 0]
+                textanzeige[0] = "Steine platzieren"
                 game_intro()
 
 
@@ -789,7 +794,7 @@ a22 = "x"
 a23 = "x"
 a24 = "x"
 
-spielfeld = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24]
+spielfeld = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24,]
 
 
 #Definition der Mühlen
@@ -816,7 +821,7 @@ alle_muehlen = [muehle1, muehle2, muehle3, muehle4, muehle5, muehle6, muehle7, m
 steineberg = 18
 spieler1 = 9
 spieler2 = 9
-steinebank = [6, spieler1, spieler2]
+steinebank = [18, spieler1, spieler2]
 switch = [0, 0, 0]
 textanzeige = ["Steine platzieren", " ", "Weiss am Zug"]
 
