@@ -812,12 +812,14 @@ muehle15 = 0
 muehle16 = 0
 
 alle_muehlen = [muehle1, muehle2, muehle3, muehle4, muehle5, muehle6, muehle7, muehle8, muehle9, muehle10, muehle11, muehle12, muehle13, muehle14, muehle15, muehle16]
+#Definition von diversen Listen
 steineberg = 18
 spieler1 = 9
 spieler2 = 9
 steinebank = [6, spieler1, spieler2]
 switch = [0, 0, 0]
-textanzeige = ["Steine platzieren"]
+textanzeige = ["Steine platzieren", " ", "Weiss am Zug"]
+
 """
 def muehle_erkennen():
     neue_muehle = 0
@@ -1534,7 +1536,7 @@ def place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
     click = pygame.mouse.get_pressed()"""
     # print(click)
     if steinebank[0] == 0:
-        move_and_remove(aktueller_spieler, action, neue_muehle)
+        move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
     else:
 
         while steinebank[0] > 0:
@@ -1598,24 +1600,6 @@ def move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
             switch[0] = 0
             playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
 
-
-
-        """steinwaehlen = int(input("Wähle den gewünschten Stein aus! \n"))
-        if spielfeld[steinwaehlen - 1] == aktueller_spieler:
-            steinsetzen = int(input("Wo hin soll der Stein gelegt werden?"))
-            if spielfeld[steinsetzen - 1] == "x":
-                spielfeld[steinsetzen - 1] = aktueller_spieler
-                spielfeld[steinwaehlen - 1] = "x"
-                if aktueller_spieler == "w":
-                    spielsteine[steinwaehlen -1] = white
-                    aktueller_spieler = "b"
-                    print(spielfeld)
-                    print(spieleingabe)
-                else:
-                    spielsteine[steinwaehlen - 1] = black
-                    aktueller_spieler = "w"
-                    print(spielfeld)
-                    print(spieleingabe)"""
 
 def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
     # Initialisieren aller Pygame-Module und
@@ -1681,9 +1665,20 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
         button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
         if steinebank[0] == 0:
             textanzeige[0] = "Steine schieben"
+        if neue_muehle == 1:
+            textanzeige[1] = "Mühle!"
+        if switch[1] > 0:
+            textanzeige[1] = "Stein anheben"
+        if switch[2] > 0:
+            textanzeige[1] = "Stein absetzen"
+        if aktueller_spieler == "w":
+            textanzeige[2] = "Weiss am Zug"
+        else:
+            textanzeige[2] = "Schwarz am Zug"
 
-        button(textanzeige[0], 20, 125, 150, 50, yellow, red, action="")
-
+        button(textanzeige[0], 230, 20, 200, 50, white, red, action="")
+        button(textanzeige[1], 485, 20, 200, 50, white, red, action="")
+        button(textanzeige[2], 740, 20, 200, 50, white, red, action="")
         stein(spieleingabe, neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
         stein(spieleingabe, neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
         stein(spieleingabe, neue_muehle, aktueller_spieler,"A3", 785, 75, 30, 30, spielsteine[2], light_green, action="A3")  #A3
