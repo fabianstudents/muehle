@@ -68,7 +68,7 @@ def game_controls():
                 pygame.quit()
                 quit()
 
-        gameDisplay.fill(white)
+        gameDisplay.fill(beige)
         message_to_screen("Link zu Regeln", green, -200, size="large")
         message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", black, -30)
 
@@ -105,6 +105,7 @@ def button(aktueller_spieler, text, x, y, width, height, inactive_color, active_
                 steinebank[0:2] = [18, 9, 9]
                 switch[0:2] = [0, 0, 0]
                 mitteilung[0] = " "
+                alle_muehlen[0:15] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                 textanzeige[0] = "Steine platzieren"
                 game_intro()
             if action == "Mühle_aufheben":
@@ -703,11 +704,11 @@ def game_intro():
                     pygame.quit()
                     quit()
 
-        gameDisplay.fill(white)
+        gameDisplay.fill(beige)
         message_to_screen("Willkommen zu Mühle", green, -100, size="medium")
         message_to_screen("Das ist ein Mühle-Spiel", black, -30)
         message_to_screen("programmiert von Studenten der FHNW.", black, 10)
-
+        message_to_screen("© by Sandro Michel, Lorenz Wyssmann, Michael Klaus, Fabian Gürtler", black, 350)
 
         button(aktueller_spieler, "spielen", 225, 500, 150, 50, green, light_green, action="spielen")
         button(aktueller_spieler, "Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
@@ -728,7 +729,7 @@ def you_win():
                     pygame.quit()
                     quit()
 
-            gameDisplay.fill(white)
+            gameDisplay.fill(beige)
             message_to_screen("Weiss hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, 30)
 
@@ -747,7 +748,7 @@ def you_win():
                     pygame.quit()
                     quit()
 
-            gameDisplay.fill(white)
+            gameDisplay.fill(beige)
             message_to_screen("Schwarz hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, -30)
 
@@ -757,7 +758,7 @@ def you_win():
 
             pygame.display.update()
 
-
+"""
 def gameLoop():
     gameExit = False
     gameOver = False
@@ -766,7 +767,7 @@ def gameLoop():
     while not gameExit:
 
         if gameOver == True:
-            # gameDisplay.fill(white)
+            # gameDisplay.fill(beige)
             message_to_screen("Game Over", red, -50, size="large")
             message_to_screen("Press C to play again or Q to exit", black, 50)
             pygame.display.update()
@@ -790,7 +791,8 @@ def gameLoop():
                 gameExit = True
 
     pygame.quit()
-    quit()
+    quit()    """
+
 
 
 
@@ -1753,54 +1755,53 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
         # Inhalt von screen anzeigen.
         pygame.display.flip()
 
-        button(aktueller_spieler, "Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
+        button(aktueller_spieler, "Hauptmenü", 20, 75, 150, 50, green, light_green, action="Hauptmenü")
         if steinebank[0] == 0:
             textanzeige[0] = "Steine schieben"
         if neue_muehle == 1:
             textanzeige[1] = "Mühle!"
         else:
             textanzeige[1] = " "
-        if switch[2] > 0:
+        """if switch[2] > 0:
             textanzeige[1] = "Stein anheben"
         if switch[1] > 0:
-            textanzeige[1] = "Stein absetzen"
+            textanzeige[1] = "Stein absetzen"""""
         if aktueller_spieler == "w":
             textanzeige[2] = "Weiss am Zug"
         else:
             textanzeige[2] = "Schwarz am Zug"
 
-        button(aktueller_spieler, textanzeige[0], 230, 20, 200, 50, white, white, action="")
-        button(aktueller_spieler, textanzeige[1], 485, 20, 200, 50, white, white, action="")
-        button(aktueller_spieler, textanzeige[2], 740, 20, 200, 50, white, white, action="")
+        button(aktueller_spieler, textanzeige[0], 240, 20, 200, 50, beige, beige, action="")
+        button(aktueller_spieler, textanzeige[1], 400, 365, 200, 50, beige, beige, action="")
+        button(aktueller_spieler, textanzeige[2], 540, 20, 200, 50, beige, beige, action="")
         button(aktueller_spieler, mitteilung[0], 20, 720, 880, 50, beige, beige, action="")
 
-        button(aktueller_spieler, "Patt", 20, 125, 150, 50, yellow, red, action="Mühle_aufheben")
+        button(aktueller_spieler, "Patt", 20, 150, 150, 50, green, light_green, action="Mühle_aufheben")
 
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
-        stein(spieleingabe, neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
-        stein(spieleingabe, neue_muehle, aktueller_spieler,"A3", 785, 75, 30, 30, spielsteine[2], light_green, action="A3")  #A3
-        stein(spieleingabe, neue_muehle, aktueller_spieler,"A4", 285, 175, 30, 30, spielsteine[3], light_green, action="A4")  #A4
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A5", 485, 175, 30, 30, spielsteine[4], light_green, action="A5")  #A5
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A6", 685, 175, 30, 30, spielsteine[5], light_green, action="A6")  #A6
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A7", 385, 275, 30, 30, spielsteine[6], light_green, action="A7")  #A7
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A8", 485, 275, 30, 30, spielsteine[7], light_green, action="A8")  #A8
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A9", 585, 275, 30, 30, spielsteine[8], light_green, action="A9")  #A9
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A10", 185, 375, 30, 30, spielsteine[9], light_green, action="A10")  #A10
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A11", 285, 375, 30, 30, spielsteine[10], light_green, action="A11")  #A11
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A12", 385, 375, 30, 30, spielsteine[11], light_green, action="A12")  #A12
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A13", 585, 375, 30, 30, spielsteine[12], light_green, action="A13")  #A13
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A14", 685, 375, 30, 30, spielsteine[13], light_green, action="A14")  #A14
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A15", 785, 375, 30, 30, spielsteine[14], light_green, action="A15")  #A15
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A16", 385, 475, 30, 30, spielsteine[15], light_green, action="A16")  #A16
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A17", 485, 475, 30, 30, spielsteine[16], light_green, action="A17")  #A17
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A18", 585, 475, 30, 30, spielsteine[17], light_green, action="A18")  #A18
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A19", 285, 575, 30, 30, spielsteine[18], light_green, action="A19")  #A19
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A20", 485, 575, 30, 30, spielsteine[19], light_green, action="A20")  #A20
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A21", 685, 575, 30, 30, spielsteine[20], light_green, action="A21")  #A21
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A22", 185, 675, 30, 30, spielsteine[21], light_green, action="A22")  #A22
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A23", 485, 675, 30, 30, spielsteine[22], light_green, action="A23")  #A23
-        stein(spieleingabe, neue_muehle, aktueller_spieler, "A24", 785, 675, 30, 30, spielsteine[23], light_green, action="A24")  #A24
-
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
+        stein(spieleingabe, neue_muehle, aktueller_spieler,"O", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
+        stein(spieleingabe, neue_muehle, aktueller_spieler,"O", 785, 75, 30, 30, spielsteine[2], light_green, action="A3")  #A3
+        stein(spieleingabe, neue_muehle, aktueller_spieler,"O", 285, 175, 30, 30, spielsteine[3], light_green, action="A4")  #A4
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 485, 175, 30, 30, spielsteine[4], light_green, action="A5")  #A5
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 685, 175, 30, 30, spielsteine[5], light_green, action="A6")  #A6
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 385, 275, 30, 30, spielsteine[6], light_green, action="A7")  #A7
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 485, 275, 30, 30, spielsteine[7], light_green, action="A8")  #A8
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 585, 275, 30, 30, spielsteine[8], light_green, action="A9")  #A9
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 185, 375, 30, 30, spielsteine[9], light_green, action="A10")  #A10
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 285, 375, 30, 30, spielsteine[10], light_green, action="A11")  #A11
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 385, 375, 30, 30, spielsteine[11], light_green, action="A12")  #A12
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 585, 375, 30, 30, spielsteine[12], light_green, action="A13")  #A13
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 685, 375, 30, 30, spielsteine[13], light_green, action="A14")  #A14
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 785, 375, 30, 30, spielsteine[14], light_green, action="A15")  #A15
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 385, 475, 30, 30, spielsteine[15], light_green, action="A16")  #A16
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 485, 475, 30, 30, spielsteine[16], light_green, action="A17")  #A17
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 585, 475, 30, 30, spielsteine[17], light_green, action="A18")  #A18
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 285, 575, 30, 30, spielsteine[18], light_green, action="A19")  #A19
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 485, 575, 30, 30, spielsteine[19], light_green, action="A20")  #A20
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 685, 575, 30, 30, spielsteine[20], light_green, action="A21")  #A21
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 185, 675, 30, 30, spielsteine[21], light_green, action="A22")  #A22
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 485, 675, 30, 30, spielsteine[22], light_green, action="A23")  #A23
+        stein(spieleingabe, neue_muehle, aktueller_spieler, "O", 785, 675, 30, 30, spielsteine[23], light_green, action="A24")  #A24
 
         pygame.display.update()
 
