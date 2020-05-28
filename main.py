@@ -107,6 +107,13 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 mitteilung[0] = " "
                 textanzeige[0] = "Steine platzieren"
                 game_intro()
+            if action == "Mühle_aufheben":
+                aufheben(neue_muehle)
+                if steinebank[0] > 0:
+                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                else:
+                    move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+
 
 
     else:
@@ -675,6 +682,10 @@ def stein(spieleingabe, neue_muehle, aktueller_spieler, text, x, y, width, heigh
 
     text_to_button(text, black, x, y, width, height)
 
+def aufheben(neue_muehle):
+    neue_muehle = 0
+
+
 
 def game_intro():
     intro = True
@@ -708,30 +719,6 @@ def game_intro():
 
 
 
-
-def game_over(): #Muss noch angepasst werden!!
-    game_over = True
-
-    while game_over:
-        for event in pygame.event.get():
-            # print(event)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-
-        gameDisplay.fill(white)
-        message_to_screen("Game Over", green, -100, size="large")
-        message_to_screen("You died.", black, -30)
-
-        button("nochmals spielen", 185, 540, 150, 50, green, light_green, action="spielen")
-        button("Regeln", 425, 500, 100, 50, yellow, light_yellow, action="Regeln")
-        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
-
-        pygame.display.update()
-
-
-
-
 def you_win():
     if steinebank[1] < 3:
         win = True
@@ -747,7 +734,7 @@ def you_win():
             message_to_screen("Weiss hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, 30)
 
-            button("Hauptmenü", 225, 500, 150, 50, green, light_green, action="Hauptmenü")
+            button("Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
             button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
             button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
@@ -766,7 +753,7 @@ def you_win():
             message_to_screen("Schwarz hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, -30)
 
-            button("Hauptmenü", 225, 500, 150, 50, green, light_green, action="Hauptmenü")
+            button("Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
             button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
             button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
@@ -1058,6 +1045,7 @@ def spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe):
         you_win()
         action = None
         pygame.display.update()
+        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
         place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
     else:
         aktueller_spieler = "w"
@@ -1065,6 +1053,7 @@ def spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe):
         you_win()
         action = None
         pygame.display.update()
+        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
         place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
 
 def einfaerben(aktueller_spieler, neue_muehle, spieleingabe):
@@ -1278,7 +1267,7 @@ def stein_entfernen(aktueller_spieler,action, neue_muehle, stein_gegner, spielei
             elif stein_entfernen == 9:
                 if spielfeld[stein_entfernen - 1] != aktueller_spieler:
                     if spielfeld[stein_entfernen - 1] != "x":
-                        if alle_muehlen[4] == 0 and alle_muehlen[4] == 0:
+                        if alle_muehlen[8] == 0 and alle_muehlen[9] == 0:
                             spielfeld[stein_entfernen - 1] = "x"
                             neue_muehle = 0
                             spielsteine[stein_entfernen - 1] = beige
@@ -1662,13 +1651,9 @@ def place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
                         pygame.display.update()
                 else:
                     mitteilung[0] = "Platz bereits belegt, bitte einen anderes Feld auswählen."
-                    print("Platz bereits belegt, bitte einen anderes Feld auswählen.")
                     playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
             else:
-                print(spielfeld)
-                print(spieleingabe)
                 mitteilung[0] ="Bitte wähle einen Platz auf dem Spielfeld aus !"
-                print("Bitte wähle einen Platz auf dem Spielfeld aus (1 bis 24)!")
                 playboard(action, aktueller_spieler, neue_muehle)
 
 def move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
@@ -1779,10 +1764,13 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
         else:
             textanzeige[2] = "Schwarz am Zug"
 
-        button(textanzeige[0], 230, 20, 200, 50, white, red, action="")
-        button(textanzeige[1], 485, 20, 200, 50, white, red, action="")
-        button(textanzeige[2], 740, 20, 200, 50, white, red, action="")
-        button(mitteilung[0], 20, 720, 880, 50, beige, red, action="")
+        button(textanzeige[0], 230, 20, 200, 50, white, white, action="")
+        button(textanzeige[1], 485, 20, 200, 50, white, white, action="")
+        button(textanzeige[2], 740, 20, 200, 50, white, white, action="")
+        button(mitteilung[0], 20, 720, 880, 50, beige, beige, action="")
+
+        button("Mühle_aufheben", 20, 125, 200, 50, yellow, red, action="Mühle_aufheben")
+
         stein(spieleingabe, neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
         stein(spieleingabe, neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
         stein(spieleingabe, neue_muehle, aktueller_spieler,"A3", 785, 75, 30, 30, spielsteine[2], light_green, action="A3")  #A3
