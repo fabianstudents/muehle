@@ -1,5 +1,5 @@
 import pygame
-
+import webbrowser
 
 pygame.init()
 
@@ -65,14 +65,14 @@ def game_controls():
                 pygame.quit()
                 quit()
 
-        gameDisplay.fill(white)
+        gameDisplay.fill(beige)
         message_to_screen("Link zu Regeln", green, -200, size="large")
-        message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", blue, -30)
+       # message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", blue, -30)
+        button("Klick hier", 375, 350, 200, 50, beige, white, action= "Link")
 
-
-        button("spielen", 150, 500, 150, 50, green, light_green, action="spielen")
-        button("Hauptmenü", 350, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
-        button("verlassen", 550, 500, 150, 50, red, light_red, action="verlassen")
+        button("spielen", 200, 500, 150, 50, green, light_green, action="spielen")
+        button("Hauptmenü", 400, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
+        button("verlassen", 600, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
@@ -99,6 +99,8 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
             if action == "Hauptmenü":
                 game_intro()
 
+            if action == "Link":
+                webbrowser.open("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln")
 
     else:
         pygame.draw.rect(gameDisplay, inactive_color, (x, y, width, height))
@@ -125,7 +127,7 @@ def game_intro():
                     quit()
 
 
-        gameDisplay.fill(white)
+        gameDisplay.fill(beige)
         message_to_screen("Willkommen zu Mühle", green, -100, size="medium")
         message_to_screen("Das ist ein Mühle-Spiel", black, -30)
         message_to_screen("programmiert von Studenten der FHNW.", black, 10)
