@@ -111,7 +111,7 @@ def button(aktueller_spieler, text, x, y, width, height, inactive_color, active_
                 steinebank[0:2] = [18, 9, 9]
                 switch[0:2] = [0, 0, 0]
                 mitteilung[0] = " "
-                alle_muehlen[0:15] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+                alle_muehlen[0:15] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                 textanzeige[0] = "Steine platzieren"
                 game_intro()
             if action == "Mühle_aufheben":
@@ -733,7 +733,7 @@ def you_win():
             message_to_screen("Weiss hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, 30)
 
-            button(aktueller_spieler, "Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
+            button(aktueller_spieler, "Neustart", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
             button(aktueller_spieler, "Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
             button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
@@ -752,7 +752,7 @@ def you_win():
             message_to_screen("Schwarz hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, -30)
 
-            button(aktueller_spieler, "Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
+            button(aktueller_spieler, "Neustart", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
             button(aktueller_spieler, "Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
             button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
@@ -810,9 +810,9 @@ muehle16 = 0
 alle_muehlen = [muehle1, muehle2, muehle3, muehle4, muehle5, muehle6, muehle7, muehle8, muehle9, muehle10, muehle11, muehle12, muehle13, muehle14, muehle15, muehle16]
 #Definition von diversen Listen
 steineberg = 18
-spieler1 = 4
-spieler2 = 4
-steinebank = [8, spieler1, spieler2]
+spieler1 = 9
+spieler2 = 9
+steinebank = [18, spieler1, spieler2]
 switch = [0, 0, 0]
 textanzeige = ["Steine platzieren", " ", "Weiss am Zug"]
 mitteilung = [" "]
