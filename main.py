@@ -1,6 +1,8 @@
 import pygame
 import webbrowser
 
+
+
 pygame.init()
 
 display_width = 1000
@@ -909,7 +911,7 @@ def muehle_aufheben(aktueller_spieler, aciton, neue_muhle, spieleingabe):
         alle_muehlen[3] = 0
     elif switch[1] == 2:
         alle_muehlen[0] = 0
-        alle_muehlen[4] = 0
+        alle_muehlen[12] = 0
     elif switch[1] == 3:
         alle_muehlen[0] = 0
         alle_muehlen[1] = 0
@@ -924,7 +926,7 @@ def muehle_aufheben(aktueller_spieler, aciton, neue_muhle, spieleingabe):
         alle_muehlen[5] = 0
     elif switch[1] == 7:
         alle_muehlen[8] = 0
-        alle_muehlen[12] = 0
+        alle_muehlen[11] = 0
     elif switch[1] == 8:
         alle_muehlen[8] = 0
         alle_muehlen[12] = 0
