@@ -73,16 +73,16 @@ def game_controls():
         message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", black, -30)
 
 
-        button("spielen", 225, 500, 150, 50, green, light_green, action="spielen")
-        button("Hauptmenü", 425, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
-        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
+        button(aktueller_spieler, "spielen", 225, 500, 150, 50, green, light_green, action="spielen")
+        button(aktueller_spieler, "Hauptmenü", 425, 500, 150, 50, yellow, light_yellow, action="Hauptmenü")
+        button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
 
 
 
-def button(text, x, y, width, height, inactive_color, active_color, action=None):
+def button(aktueller_spieler, text, x, y, width, height, inactive_color, active_color, action=None):
     cur = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     # print(click)
@@ -109,10 +109,8 @@ def button(text, x, y, width, height, inactive_color, active_color, action=None)
                 game_intro()
             if action == "Mühle_aufheben":
                 aufheben(neue_muehle)
-                if steinebank[0] > 0:
-                    place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
-                else:
-                    move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
+                spielerwechsel_erzwungen(neue_muehle, aktueller_spieler)
+
 
 
 
@@ -684,7 +682,7 @@ def stein(spieleingabe, neue_muehle, aktueller_spieler, text, x, y, width, heigh
 
 def aufheben(neue_muehle):
     neue_muehle = 0
-
+    mitteilung[0] = " "
 
 
 def game_intro():
@@ -711,9 +709,9 @@ def game_intro():
         message_to_screen("programmiert von Studenten der FHNW.", black, 10)
 
 
-        button("spielen", 225, 500, 150, 50, green, light_green, action="spielen")
-        button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
-        button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
+        button(aktueller_spieler, "spielen", 225, 500, 150, 50, green, light_green, action="spielen")
+        button(aktueller_spieler, "Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
+        button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
         pygame.display.update()
 
@@ -734,9 +732,9 @@ def you_win():
             message_to_screen("Weiss hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, 30)
 
-            button("Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
-            button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
-            button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
+            button(aktueller_spieler, "Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
+            button(aktueller_spieler, "Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
+            button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
             pygame.display.update()
     if steinebank[2] < 3:
@@ -753,9 +751,9 @@ def you_win():
             message_to_screen("Schwarz hat gewonnen!", green, -100, size="large")
             message_to_screen("Congratulations!", black, -30)
 
-            button("Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
-            button("Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
-            button("verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
+            button(aktueller_spieler, "Erneut spielen", 220, 500, 160, 50, green, light_green, action="Hauptmenü")
+            button(aktueller_spieler, "Regeln", 425, 500, 150, 50, yellow, light_yellow, action="Regeln")
+            button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
             pygame.display.update()
 
@@ -1037,6 +1035,13 @@ def muehle_aufheben(aktueller_spieler, aciton, neue_muhle, spieleingabe):
         alle_muehlen[1] = 0
         alle_muehlen[2] = 0
 
+def spielerwechsel_erzwungen(neue_muehle, aktueller_spieler):
+    if aktueller_spieler == "w":
+        aktueller_spieler = "b"
+        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
+    else:
+        aktueller_spieler = "w"
+        playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
 
 def spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe):
     if aktueller_spieler == "w":
@@ -1748,7 +1753,7 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
         # Inhalt von screen anzeigen.
         pygame.display.flip()
 
-        button("Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
+        button(aktueller_spieler, "Hauptmenü", 20, 50, 150, 50, yellow, red, action="Hauptmenü")
         if steinebank[0] == 0:
             textanzeige[0] = "Steine schieben"
         if neue_muehle == 1:
@@ -1764,12 +1769,12 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
         else:
             textanzeige[2] = "Schwarz am Zug"
 
-        button(textanzeige[0], 230, 20, 200, 50, white, white, action="")
-        button(textanzeige[1], 485, 20, 200, 50, white, white, action="")
-        button(textanzeige[2], 740, 20, 200, 50, white, white, action="")
-        button(mitteilung[0], 20, 720, 880, 50, beige, beige, action="")
+        button(aktueller_spieler, textanzeige[0], 230, 20, 200, 50, white, white, action="")
+        button(aktueller_spieler, textanzeige[1], 485, 20, 200, 50, white, white, action="")
+        button(aktueller_spieler, textanzeige[2], 740, 20, 200, 50, white, white, action="")
+        button(aktueller_spieler, mitteilung[0], 20, 720, 880, 50, beige, beige, action="")
 
-        button("Mühle_aufheben", 20, 125, 200, 50, yellow, red, action="Mühle_aufheben")
+        button(aktueller_spieler, "Patt", 20, 125, 150, 50, yellow, red, action="Mühle_aufheben")
 
         stein(spieleingabe, neue_muehle, aktueller_spieler, "A1", 185, 75, 30, 30, spielsteine[0], light_green, action="A1")  #A1
         stein(spieleingabe, neue_muehle, aktueller_spieler,"A2", 485, 75, 30, 30, spielsteine[1], light_green, action="A2")  #A2
