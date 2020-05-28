@@ -1,4 +1,5 @@
 import pygame
+import webbrowser
 
 pygame.init()
 
@@ -70,7 +71,8 @@ def game_controls():
 
         gameDisplay.fill(beige)
         message_to_screen("Link zu Regeln", green, -200, size="large")
-        message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", black, -30)
+        button(aktueller_spieler, "Link zu Regeln", 375, 350, 200, 50, beige, white, action="Link")
+        #message_to_screen("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln", black, -30)
 
 
         button(aktueller_spieler, "spielen", 225, 500, 150, 50, green, light_green, action="spielen")
@@ -95,6 +97,8 @@ def button(aktueller_spieler, text, x, y, width, height, inactive_color, active_
 
             if action == "Regeln":
                 game_controls()
+            if action == "Link":
+                webbrowser.open("https://www.spielezar.ch/blog/spielregeln/muehle-spielregeln")
 
             if action == "spielen":
                 playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
@@ -111,10 +115,6 @@ def button(aktueller_spieler, text, x, y, width, height, inactive_color, active_
             if action == "Mühle_aufheben":
                 aufheben(neue_muehle)
                 spielerwechsel_erzwungen(neue_muehle, aktueller_spieler)
-
-
-
-
     else:
         pygame.draw.rect(gameDisplay, inactive_color, (x, y, width, height))
 
@@ -716,8 +716,6 @@ def game_intro():
 
         pygame.display.update()
 
-
-
 def you_win():
     if steinebank[1] < 3:
         win = True
@@ -757,48 +755,6 @@ def you_win():
             button(aktueller_spieler, "verlassen", 625, 500, 150, 50, red, light_red, action="verlassen")
 
             pygame.display.update()
-
-"""
-def gameLoop():
-    gameExit = False
-    gameOver = False
-
-
-    while not gameExit:
-
-        if gameOver == True:
-            # gameDisplay.fill(beige)
-            message_to_screen("Game Over", red, -50, size="large")
-            message_to_screen("Press C to play again or Q to exit", black, 50)
-            pygame.display.update()
-            while gameOver == True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        gameExit = True
-                        gameOver = False
-
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_c:
-                            gameLoop()
-                        elif event.key == pygame.K_q:
-
-                            gameExit = True
-                            gameOver = False
-
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                gameExit = True
-
-    pygame.quit()
-    quit()    """
-
-
-
-
-
-
-
 
 #Definition des Spielfeld
 
@@ -865,102 +821,86 @@ def muehle_erkennen(aktueller_spieler, action, neue_muehle, spieleingabe):
     if spielfeld[0] == spielfeld[1] == spielfeld[2] == aktueller_spieler and alle_muehlen[0] == 0:
         alle_muehlen[0] = 1
         neue_muehle = 1
-        print("Neue Mühle 1")
         mitteilung[0] = "Du darfst einen Stein entfernen"
-        print("Du darfst einen Stein entfernen")
+
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[2] == spielfeld[14] == spielfeld[23] == aktueller_spieler and alle_muehlen[1] == 0:
         alle_muehlen[1] = 1
         neue_muehle = 1
-        print("Neue Mühle 2")
+
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[21] == spielfeld[22] == spielfeld[23] == aktueller_spieler and alle_muehlen[2] == 0:
         alle_muehlen[2] = 1
         neue_muehle = 1
-        print("Neue Mühle 3")
+
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[0] == spielfeld[9] == spielfeld[21] == aktueller_spieler and alle_muehlen[3] == 0:
         alle_muehlen[3] = 1
         neue_muehle = 1
-        print("Neue Mühle 4")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[3] == spielfeld[4] == spielfeld[5] == aktueller_spieler and alle_muehlen[4] == 0:
         alle_muehlen[4] = 1
         neue_muehle = 1
-        print("Neue Mühle 5")
         mitteilung[0] = "Du darfst einen Stein entfernen"
-        print("Du darfst einen Stein entfernen")
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[5] == spielfeld[13] == spielfeld[20] == aktueller_spieler and alle_muehlen[5] == 0:
         alle_muehlen[5] = 1
         neue_muehle = 1
-        print("Neue Mühle 6")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[18] == spielfeld[19] == spielfeld[20] == aktueller_spieler and alle_muehlen[6] == 0:
         alle_muehlen[6] = 1
         neue_muehle = 1
-        print("Neue Mühle 7")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[3] == spielfeld[10] == spielfeld[18] == aktueller_spieler and alle_muehlen[7] == 0:
         alle_muehlen[7] = 1
         neue_muehle = 1
-        print("Neue Mühle 8")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[6] == spielfeld[7] == spielfeld[8] == aktueller_spieler and alle_muehlen[8] == 0:
         alle_muehlen[8] = 1
         neue_muehle = 1
-        print("Neue Mühle 9")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[8] == spielfeld[12] == spielfeld[17] == aktueller_spieler and alle_muehlen[9] == 0:
         alle_muehlen[9] = 1
         neue_muehle = 1
-        print("Neue Mühle 10")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[15] == spielfeld[16] == spielfeld[17] == aktueller_spieler and alle_muehlen[10] == 0:
         alle_muehlen[10] = 1
         neue_muehle = 1
-        print("Neue Mühle 11")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[6] == spielfeld[11] == spielfeld[15] == aktueller_spieler and alle_muehlen[11] == 0:
         alle_muehlen[11] = 1
         neue_muehle = 1
-        print("Neue Mühle 12")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[1] == spielfeld[4] == spielfeld[7] == aktueller_spieler and alle_muehlen[12] == 0:
         alle_muehlen[12] = 1
         neue_muehle = 1
-        print("Neue Mühle 13")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[12] == spielfeld[13] == spielfeld[14] == aktueller_spieler and alle_muehlen[13] == 0:
         alle_muehlen[13] = 1
         neue_muehle = 1
-        print("Neue Mühle 14 ")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[16] == spielfeld[19] == spielfeld[22] == aktueller_spieler and alle_muehlen[14] == 0:
         alle_muehlen[14] = 1
         neue_muehle = 1
-        print("Neue Mühle 15")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
     elif spielfeld[9] == spielfeld[10] == spielfeld[11] == aktueller_spieler and alle_muehlen[15] == 0:
         alle_muehlen[15] = 1
         neue_muehle = 1
-        print("Neue Mühle 16")
         mitteilung[0] = "Du darfst einen Stein entfernen"
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-
 
 
 def muehle_aufheben(aktueller_spieler, aciton, neue_muhle, spieleingabe):
@@ -1053,7 +993,6 @@ def spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe):
         action = None
         pygame.display.update()
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-        place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
     else:
         aktueller_spieler = "w"
         steinebank[2] = steinebank[2] - 1
@@ -1061,7 +1000,6 @@ def spielerwechsel(aktueller_spieler, neue_muehle, spieleingabe):
         action = None
         pygame.display.update()
         playboard(action, aktueller_spieler, neue_muehle, spieleingabe)
-        place_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe)
 
 def einfaerben(aktueller_spieler, neue_muehle, spieleingabe):
 
@@ -1697,7 +1635,6 @@ def move_and_remove(aktueller_spieler, action, neue_muehle, spieleingabe):
 def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
     # Initialisieren aller Pygame-Module und
     # Fenster erstellen (wir bekommen eine Surface, die den Bildschirm repräsentiert).
-    """pygame.init()"""
     screen = pygame.display.set_mode((display_width, display_height))
 
     # Titel des Fensters setzen, Mauszeiger nicht verstecken und Tastendrücke wiederholt senden.
@@ -1762,10 +1699,6 @@ def playboard(action, aktueller_spieler, neue_muehle, spieleingabe):
             textanzeige[1] = "Mühle!"
         else:
             textanzeige[1] = " "
-        """if switch[2] > 0:
-            textanzeige[1] = "Stein anheben"
-        if switch[1] > 0:
-            textanzeige[1] = "Stein absetzen"""""
         if aktueller_spieler == "w":
             textanzeige[2] = "Weiss am Zug"
         else:
